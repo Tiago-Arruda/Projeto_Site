@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Site</b>_teste',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -237,43 +237,28 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'can'  => 'authadmin',
+            'text'    => 'Administrador',
+            'icon'    => 'fas fa-fw fa-user-plus',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Cadastro',
+                    'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
+                    'icon' => 'fas fa-fw fa-plus',
+                    
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text'    => 'Excluir',
+                    'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
+                    'icon' => 'fas fa-fw fa-times',
+                     
                 ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
+               
             ],
         ],
+        
+            
+        
         ['header' => 'labels'],
         [
             'text'       => 'important',
