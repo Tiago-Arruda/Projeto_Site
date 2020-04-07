@@ -221,14 +221,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'icon_color' => 'info',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],       
+           
         [
             'text'        => 'Arquivos',
             'url'         => 'usuarios/Download',
@@ -237,10 +230,7 @@ return [
             'label'       => 'Baixar',
             'label_color' => 'primary',
         ],
-
-
-        ['header' => 'Administrador'],
-        
+        ['header' => 'CONFIGURAÇÃO'],                        
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -252,7 +242,16 @@ return [
             'icon' => 'fas fa-fw fa-lock',
             
         ],
+        [
+            'text'        => 'pages',
+            'url'         => 'admin/pages',
+            'icon'        => 'far fa-fw fa-file',
+            'icon_color' => 'info',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],   
                             
+        ['header' => 'ADMINISTRADOR'],                
         [
             'can'  => 'authadmin',
             'text'    => 'Administrador',
@@ -272,12 +271,14 @@ return [
                     'text' => 'Cadastro',
                     'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
                     'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'primary',
                     
                 ],
                 [
                     'text'    => 'Excluir',
                     'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
                     'icon' => 'fas fa-fw fa-times',
+                    'icon_color' => 'red',
                      
                 ],
                
@@ -285,7 +286,7 @@ return [
         ],
         
             
-        
+      /*  
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -299,6 +300,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'aqua',
         ],  
+        */
 
     ],
     
