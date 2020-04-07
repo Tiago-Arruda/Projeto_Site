@@ -19,27 +19,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
-
-
-Route::get('upload', 'HomeController@upload')->name('upload');
-
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //rotas reutilizadas, para acesso de administrador.
 Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'prefix'=> 'admin'], function () {
+    //usuarios
     Route::get('cadastro','CadastroController@index')->name('admin.cadastro.cadindex');
     Route::post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
+    //arquivos
+    Route::get('upload','FilesController@index')->name('admin.Upload.upload');
+    Route::post('upload','FilesController@index')->name('admin.Upload.upload');
          
     //Route:get('cadastro','CadastroController@index')->name('admin.cadastro.cadindex');
     //$this->post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
     Route::any('cadastroup','CadastroController@atualiza')->name('cadastroup');
     Route::any('cadastrodown','CadastroController@excluir')->name('cadastrodown');
+
+
 
 });
 
@@ -53,3 +50,10 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     Route::any('cadastrodown','CadastroController@excluir')->name('cadastrodown');
    
     });*/
+
+
+  
+//Rotas para Upar arquivos
+Route::get('upload', 'HomeController@upload')->name('upload');
+
+  
