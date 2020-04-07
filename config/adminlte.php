@@ -179,7 +179,7 @@ return [
 
     'password_email_url' => 'password/email',
     
-    'upload' => 'upload',
+    'upload_url' => 'upload',
 
     'profile_url' => false,
 
@@ -228,16 +228,7 @@ return [
             'icon_color' => 'info',
             'label'       => 4,
             'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Upload Arquivo',
-            'url'         => 'docs/upload',
-            'icon'        => 'far fa-fw fa-file',
-            'icon_color' => 'danger',
-            'label'       => 'Insert',
-            'label_color' => 'success',
-            
-        ],
+        ],       
         [
             'text'        => 'Arquivos',
             'url'         => 'usuarios/Download',
@@ -249,6 +240,7 @@ return [
 
 
         ['header' => 'Administrador'],
+        
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -266,6 +258,16 @@ return [
             'text'    => 'Administrador',
             'icon'    => 'fas fa-fw fa-user-plus',
             'submenu' => [
+
+                [
+                    'text'        => 'Upload',
+                    'url'         => 'admin/upload', //add por @gesser, caminho para a viewr de cadastro.
+                    'icon'        => 'far fa-fw fa-file',
+                    'icon_color' => 'danger',
+                    'label'       => 'Insert',
+                    'label_color' => 'success',
+                ],
+
                 [
                     'text' => 'Cadastro',
                     'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
