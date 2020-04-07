@@ -47,9 +47,7 @@ class FilesController extends Controller
                 $ide = $id;       
            
              return 
-                    view('admin.Upload.upload')->with('file', $file)->with('id',$id);
-                    
-
+                    view('admin.Upload.upload')->with('file', $file)->with('id',$id);                    
         }else{
             return redirect()
                 ->route('admin.Upload.upload')
@@ -57,17 +55,6 @@ class FilesController extends Controller
             }
           
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -130,6 +117,9 @@ private function fileDiff($a, $b)
 
     return $diff;
 }
+
+
+
     public function uploads(Request $request)
     {
         /*
@@ -155,4 +145,51 @@ private function fileDiff($a, $b)
 
         // Faça qualquer coisa com o arquivo enviado....
     }
+
+
+
+
+public function atualizadoc(Request $request)
+        {
+            $id = $request->input('nome');
+
+
+             // pegar o o valor da atualização a serfeita
+            // status do documento, conteudo   e industria 
+            // validar qual será atualização- tipo se o campo estiver vazio não atualizar.
+            $status = $request->input('status');
+            $status = $request->input('status');
+            $status = $request->input('status');
+
+
+
+            if (!is_null($id)){
+
+                //Validação individual-avaliar se isso vai perder tempo ou pesar o banco
+                if (!is_null($status)){
+                    DB::table('files')->where('id', $id)->update(array('status'=> $status));                    
+                }    
+                if (!is_null($status)){
+                    DB::table('files')->where('id', $id)->update(array('conteudo'=> $conteudo));                    
+                }  
+                if (!is_null($status)){
+                    DB::table('files')->where('id', $id)->update(array('industria'=> $industria));                    
+                }    
+
+                //DB::table('files')->where('id', $id)->update(array('status'=> $status,'conteudo'=> $conteudo,'industria'=> $industria,));
+
+                return redirect()
+                    ->route('admin.uploads.upload')
+                    ->with('success', 'Documento atualizado com sucesso!');
+
+            }else{
+
+                return redirect()
+                    ->route('admin.uploads.upload')
+                    ->with('error', 'Ocorreu um erro');
+
+            }
+
+    }
+
 }
