@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Site</b>_teste',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -260,8 +260,43 @@ return [
             'icon' => 'fas fa-fw fa-lock',
             
         ],
-                
-        ['header' => '@gesserpaixao @Tiagoarruda'],
+                            
+        [
+            'can'  => 'authadmin',
+            'text'    => 'Administrador',
+            'icon'    => 'fas fa-fw fa-user-plus',
+            'submenu' => [
+                [
+                    'text' => 'Cadastro',
+                    'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
+                    'icon' => 'fas fa-fw fa-plus',
+                    
+                ],
+                [
+                    'text'    => 'Excluir',
+                    'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
+                    'icon' => 'fas fa-fw fa-times',
+                     
+                ],
+               
+            ],
+        ],
+        
+            
+        
+        ['header' => 'labels'],
+        [
+            'text'       => 'important',
+            'icon_color' => 'red',
+        ],
+        [
+            'text'       => 'warning',
+            'icon_color' => 'yellow',
+        ],
+        [
+            'text'       => 'information',
+            'icon_color' => 'aqua',
+        ],  
 
     ],
     
