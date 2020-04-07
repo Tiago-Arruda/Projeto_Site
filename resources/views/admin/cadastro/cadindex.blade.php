@@ -6,11 +6,9 @@
 @section('content_header')
 <h1>Cadastro de Administrador</h1>
 
-    <ol class="breadcrumb">
-        <li><a href="">Home</a><li>
-        <li><a href="">Administrador</a><li>
-        
-
+  <ol class="breadcrumb">
+        <li><a href="">Home&nbsp;|&nbsp;</a><li>
+        <li><a href="">Administrador</a><li >                       
     </ol>
 @stop
 
