@@ -7,10 +7,15 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-use Illuminate\Http\Request; 
+use App\Http\Requests\FilesRequest;
 use Symfony\Component\HttpFoundation\Response;
-
+use App\Http\Controllers\Admin;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 
 class FilesController extends Controller
@@ -120,38 +125,91 @@ private function fileDiff($a, $b)
 }
 
 
+/**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+        protected function create(array $data)
+        {
+            return Files::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
 
-    public function uploads(Request $request)
+
+
+    public function uploads(FilesRequest $request)
     {
         /*
         * O campo do form com o arquivo tinha o atributo name="file".
         */
-        $file = $request->file('file');
+        $filetemp = $request->file('file');
+        //$formupload = $request->form('formupload');        
+        // Se informou o arquivo, retorna um boolean        
+        $filetemp = $request->hasFile('file');
+        // Se é válido, retorna um boolean
+        $filetemp = $request->file('file')->isValid();        
+        // Retorna o nome original do arquivo
+        $nomearq = $request->file->getClientOriginalName();
+        // Extensão do arquivo
+        $tipofile = $request->file->getClientOriginalExtension();
+        $extensaoarqv =  $request->file->extension();
+        // Tamanho do arquivo
+        $tamanho = $request->imagem->getClientSize();
+        $type = $request->file->getMimeType();
+        
+        //$path = $request->file->path();
+        //$extension = $request->file->extension();
 
-        if (empty($file)) {
+
+
+        //verifica se tem arquivo a enviar       
+        if (empty($filetemp)) {
             abort(400, 'Nenhum arquivo foi enviado.');
         }
-
-/*
-         * Já existe um arquivo igual ao que está sendo enviado? 
-         * 
+        /*
+         * Já existe um arquivo igual ao que está sendo enviado?          
          * mudar para varredura no banco
          */
-        if ($this->isAlreadyUploaded($file)) {
+        if ($this->isAlreadyUploaded($filetemp)) {
             abort(400, 'Esse mesmo arquivo já foi enviado antes.');
         }
-
- /*
+        /*
          * Apenas grava o arquivo depois da verificação.
          */
-        $path = $file->store('uploads');
-
-        // Faça qualquer coisa com o arquivo enviado....
-        // implmentar o cadastro o arquivo no banco
+        $path = $filetemp->store('uploads'); 
+        $upload = $request->file->storeAs('uploads', $request->nome);  //salva no diretorio com o mesmo nome indicado pelo usuario
+        $request->file('filetemp')->store('uploads');                
         
-        ////////////???????????????????????
+          /*
+         * Insere no banco. 
+         */  
+        $files = new file;
+        $files->name        = $request->nome;
+        $files->tipo = $request->tipofile;
+        $files->caminho    = $request->path;
+        $files->conteudo       = $request->conteudo;
+        $files->Validadedoc       = $request->Validadedoc;
+        $files->estado       = $request->estado;
+        $files->industria       = $request->industria;
+        $files->versao       = $request->versao;     
+        $files->save();
 
         
+
+        if ($files)        
+        return redirect()
+                    ->route('home')
+                    ->with('success', 'Categoria inserida com sucesso!');
+                //admin.uploads.upload
+        // Redireciona de volta com uma mensagem de erro
+            return redirect()
+                ->back()
+                ->with('error', 'Falha ao inserir');
 
     }
 
