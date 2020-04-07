@@ -41,9 +41,9 @@ class CadastroController extends Controller
         }
         if (!empty($user['0']->id)){
 
-        $id = $user['0']->id;
+            $id = $user['0']->id;
 
-         $ide = $id;
+             $ide = $id;
         //$user['0']->isadmin = '1';
         //return DB::update([
                 
