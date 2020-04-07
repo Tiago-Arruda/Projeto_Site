@@ -26,6 +26,54 @@ class FilesController extends Controller
         return view('admin.Upload.upload');
     }    
 
+
+
+    public function buscar(Request $request)
+    {
+        $_nome = $request->input('_nome');
+        if(!is_null($p_nome)){
+        $user = DB::table('files')
+            ->where('name', 'like',  "%" . $p_nome)
+            ->get();
+        }else{
+            return redirect()
+            ->route('admin.Upload.upload')
+            ->with('error', 'Preencha o campo de busca Corretamente'); 
+        }
+        if (!empty($file['0']->id)){
+
+                 $id = $file['0']->id;
+
+                $ide = $id;       
+           
+             return 
+                    view('admin.Upload.upload')->with('file', $file)->with('id',$id);
+                    
+
+        }else{
+            return redirect()
+                ->route('admin.Upload.upload')
+                ->with('error', 'Registro não encontrado');
+            }
+          
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Get a validator for an incoming registration request.
      *
