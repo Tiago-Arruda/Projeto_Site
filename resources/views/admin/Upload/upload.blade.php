@@ -34,19 +34,80 @@
                             </span>
                 </div>
             
-            <div class="input-group margin ">
-                <label for="inputEmail3" class="col-sm-6 col-form-label">Procurar por conteúdo</label>
-                    <input type="text" name="_conteudo"  placeholder="#" class="form-control " />
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-info btn-flat" nome="btn-busca">Procurar  <span class="glyphicon glyphicon-search">
+                <div class="input-group margin ">
+                    <label for="inputEmail3" class="col-sm-6 col-form-label">Procurar por conteúdo</label>
+                        <input type="text" name="_conteudo"  placeholder="#" class="form-control " />
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-info btn-flat" nome="btn-busca">Procurar  <span class="glyphicon glyphicon-search">
+                                    </span>
+                                    </button>
                                 </span>
-                                </button>
-                            </span>
                 </div>
             </div>
         </div>
     </form>
-    <p>
+
+
+    <!--tabela resultado-->
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+  @endif
+  
+   @if(!empty($file)) 
+        <div class="box">
+            <div class="box-header">
+                
+            <div class="box-body">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead thead-dark">
+                        <tr>
+                            
+                            <th>Nome</th>
+
+                            <th>status</th>
+                            <th>Conteudo</th>
+                          
+                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($file as $Item)
+                            <tr>
+                                <td>{{$Item->nome}}</td>
+                                <td>{{$Item->status}}</td>
+                                <td>{{$Item->conteudo}}</td>
+                            </tr>
+                             
+                        @empty
+                        @endforelse                         
+                    </tbody>
+                </table>                
+            </div>  
+        </div>
+
+
+
+        <form style="display:inline-block; width:100px;" method="GET" action="{{route('uploadatualiza')}}">
+                {!! csrf_field()!!}
+                <input style="display:none;"  type="text" name="nome" value="{{$file[0]->id}}" placeholder="Digite o nome" class="form-control">
+                <span class="input-group-btn">
+                <input type="text" name="nome" value="{{$file[0]->id}}" placeholder="Digite o status" class="form-control">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success" name="btn-add">Modificar <span class="fa fa-plus">
+                </span>
+            </button>
+          </span>
+        </form>
+    @endif 
+<p>
 
 
 <!-- /Cadastrar Arquivo-->
@@ -81,7 +142,8 @@
                 <div class="form-group col-md-2">
                     <label for="inputEmail3" class="col-sm-7 col-form-label">Situação</label>
                     <select type='text' class="form-control"  id="estado" name="estado">
-                            <option value="0" disabled selected>Ativo</option>
+                            <option value="0" >Escolha opção</option>
+                            <option value="0" >Ativo</option>
                             <option value="1">Inativo</option>
                             <option value="2">Cancelado</option>                            
                     </select>
@@ -102,5 +164,5 @@
     <div>
 
     
-
+    
 @stop
