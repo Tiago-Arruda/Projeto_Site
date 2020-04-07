@@ -35,7 +35,7 @@
                 </div>
             
             <div class="input-group margin ">
-                <label for="inputEmail3" class="col-sm-6 col-form-label">Procurar por conteudo</label>
+                <label for="inputEmail3" class="col-sm-6 col-form-label">Procurar por conteúdo</label>
                     <input type="text" name="_conteudo"  placeholder="#" class="form-control " />
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-info btn-flat" nome="btn-busca">Procurar  <span class="glyphicon glyphicon-search">
@@ -51,7 +51,7 @@
 
 <!-- /Cadastrar Arquivo-->
 
-        <form method="post"   placeholder="R"
+        <form method="post"   placeholder="Form Cadastrar Arquivos"
             action="{{route('admin.Upload.upload')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="row">
@@ -67,8 +67,8 @@
                 <div class="form-group col-md-4">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Nome</label>
                     <input type='text' class="form-control" id="nome" name="nome"  placeholder="Nome do Arquivo"  />  
-                    <label for="inputEmail3" class="col-sm-4 col-form-label "  placeholder="Nome da Industria">Industria</label>          
-                    <input type='text' class="form-control" id="industria" name="industria"  />            
+                    <label for="inputEmail3" class="col-sm-4 col-form-label " >Industria</label>          
+                    <input type='text' class="form-control" id="industria" name="industria"  placeholder="Nome da Industria"/>            
                 </div>
                 
                 <div class="form-group col-md-4">
