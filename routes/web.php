@@ -23,6 +23,10 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 
+
+Route::get('upload', 'HomeController@upload')->name('upload');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
