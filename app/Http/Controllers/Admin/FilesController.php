@@ -28,12 +28,13 @@ class FilesController extends Controller
 
 
 
+    //Consulta no Banco  -  
     public function buscar(Request $request)
     {
         $_nome = $request->input('_nome');
         if(!is_null($p_nome)){
-        $user = DB::table('files')
-            ->where('name', 'like',  "%" . $p_nome)
+        $file = DB::table('files')
+            ->where('name', 'like',  "%" . $_nome)
             ->get();
         }else{
             return redirect()
@@ -43,8 +44,8 @@ class FilesController extends Controller
         if (!empty($file['0']->id)){
 
                  $id = $file['0']->id;
-
-                $ide = $id;       
+                 $id = $status['0']->status;
+                 $id = $conteudo['0']->conteudo;
            
              return 
                     view('admin.Upload.upload')->with('file', $file)->with('id',$id);                    
@@ -70,7 +71,7 @@ class FilesController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:100'],
             'caminho' => ['required', 'string', 'caminho'],            
         ]);
     }
@@ -132,7 +133,9 @@ private function fileDiff($a, $b)
         }
 
 /*
-         * Já existe um arquivo igual ao que está sendo enviado?
+         * Já existe um arquivo igual ao que está sendo enviado? 
+         * 
+         * mudar para varredura no banco
          */
         if ($this->isAlreadyUploaded($file)) {
             abort(400, 'Esse mesmo arquivo já foi enviado antes.');
@@ -144,6 +147,12 @@ private function fileDiff($a, $b)
         $path = $file->store('uploads');
 
         // Faça qualquer coisa com o arquivo enviado....
+        // implmentar o cadastro o arquivo no banco
+        
+        ////////////???????????????????????
+
+        
+
     }
 
 
