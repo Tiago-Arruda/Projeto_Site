@@ -29,9 +29,6 @@ Route::get('upload', 'HomeController@upload')->name('upload');
 
 Auth::routes();
 
-<<<<<<< HEAD
-Route::get('home', 'HomeController@index')->name('home');
-=======
 Route::get('/home', 'HomeController@index')->name('home');
 
 //rotas reutilizadas, para acesso de administrador.
@@ -56,4 +53,3 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     Route::any('cadastrodown','CadastroController@excluir')->name('cadastrodown');
    
     });*/
->>>>>>> 9f2c1925dc5376725cc7027b2cc48a6af6ce5d46
