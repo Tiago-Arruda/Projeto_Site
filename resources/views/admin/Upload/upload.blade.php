@@ -112,7 +112,7 @@
 
 <!-- /Cadastrar Arquivo-->
 
-        <form method="post"   placeholder="Form Cadastrar Arquivos"
+        <form method="post"  name="formupload" placeholder="Form Cadastrar Arquivos"
             action="{{route('admin.Upload.upload')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="row">
@@ -128,6 +128,7 @@
                 <div class="form-group col-md-4">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Nome</label>
                     <input type='text' class="form-control" id="nome" name="nome"  placeholder="Nome do Arquivo"  />  
+                    
                     <label for="inputEmail3" class="col-sm-4 col-form-label " >Industria</label>          
                     <input type='text' class="form-control" id="industria" name="industria"  placeholder="Nome da Industria"/>            
                 </div>
@@ -160,6 +161,17 @@
                 </button>
                 
             </div>
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+        
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
         </form>
     <div>
 
