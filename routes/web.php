@@ -19,8 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Criar um grupo de rotas de usuarios 
+Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
+
+
 
 //rotas reutilizadas, para acesso de administrador.
 Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'prefix'=> 'admin'], function () {
@@ -37,8 +41,6 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     //$this->post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
     Route::any('cadastroup','CadastroController@atualiza')->name('cadastroup');
     Route::any('cadastrodown','CadastroController@excluir')->name('cadastrodown');
-
-
 
 });
 
