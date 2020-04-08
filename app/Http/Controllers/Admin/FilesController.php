@@ -7,19 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FilesRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-/*
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
-use Illuminate\Database\Eloquent\Model;
-use Symfony\Component\HttpFoundation\Response;
-use App\Http\Controllers\Admin;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Auth;
-*/
 
 class FilesController extends Controller
 {
