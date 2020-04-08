@@ -110,17 +110,15 @@
 <p>
 
 
-<!-- /Cadastrar Arquivo-->
+<!-- /Cadastrar Arquivo  {{route('admin.Upload.upload')}}-->
 
         <form method="post"  name="formupload" placeholder="Form Cadastrar Arquivos"
             action="{{route('admin.Upload.upload')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="row">
                 <div class="col-12">
-                    <div class="card bg-success">
-                        
-                            <p class="mb-0">UpLoad de Arquivos</p>
-                        
+                    <div class="card bg-success">                        
+                            <p class="mb-0">UpLoad de Arquivos</p>                        
                     </div>
                 </div>
             </div>
@@ -143,7 +141,7 @@
                 <div class="form-group col-md-2">
                     <label for="inputEmail3" class="col-sm-7 col-form-label">Situação</label>
                     <select type='text' class="form-control"  id="estado" name="estado">
-                            <option value="0" >Escolha opção</option>
+                            <option value="" >Escolha opção</option>
                             <option value="0" >Ativo</option>
                             <option value="1">Inativo</option>
                             <option value="2">Cancelado</option>                            
@@ -153,7 +151,7 @@
                 </div>
                 <div class="form-group col-md-10">                                  
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Arquivos</label>
-                    <input type='file' class="form-control" id="primaryImage" name="primaryImage" accept="image/*" />
+                    <input type='file'  class="form-control" id="file" name="file" accept="image/*" />
                 </div>
                 
                 <button type="submit" class="btn btn-block btn-success">
