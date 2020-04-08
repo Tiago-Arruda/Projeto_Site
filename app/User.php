@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function isAdmin() // add por tiago para mostrar viewer para autorizados
     {
-    return $this->is_admin;
+     return $this->is_admin;
     }
 }
