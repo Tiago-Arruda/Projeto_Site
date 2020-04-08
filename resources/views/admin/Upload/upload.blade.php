@@ -39,7 +39,7 @@
     <ul class="nav nav-tabs">
       <li class="active link"><a href="#firsttab" class="btn btn-warning" data-toggle="tab">Pesquisar Documentos</a></li>
       <li class=" link"><a href="#secondtab" class="btn btn-success" data-toggle="tab"> Cadastrar Novo documento</a></li>
-      <li><a href="#thirdtab" class="btn btn-info" data-toggle="tab">Outros</a></li>
+      <li><a href="#thirdtab" class="btn btn-info" data-toggle="tab">Editar Documento</a></li>
     </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="firsttab">
