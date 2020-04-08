@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Documentos;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 use App\Http\Requests\FilesRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -64,22 +65,19 @@ class FilesController extends Controller
 
 
 
-
-
-
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:100'],
-            'caminho' => ['required', 'string', 'caminho'],            
-        ]);
-    }
+    //protected function validator(array $data)
+    //{
+   //     return Validator::make($data, [
+   //         'name' => ['required', 'string', 'max:100'],
+    //        'caminho' => ['required', 'string', 'caminho'],            
+    //    ]);
+   // }
 
 /**
  * Compara o conteúdo de dois arquivos para verificar se há diferenças.
@@ -126,25 +124,62 @@ private function fileDiff($a, $b)
 
 
 /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
+ * Check if the given file was already uploaded.
+ *
+ * It loops through all files in the uploads directory, looking for anyone that 
+ * could be equal to the currently uploaded file.
+ *
+ * @param  SplFileInfo $file The file to check.
+ * @return bool Indicates if the file was already upload.
+ */
+private function isAlreadyUploaded($file)  
+{
+    
+    $size = $file->get_size();
+
+    /*
+     * The directory where the files are stored.
      */
-        protected function create(array $data)
-        {
-            return Files::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
+    $path = storage_path('app/public/uploads/');
+
+    if (!is_dir($path)) {
+        return false;
+    }
+
+    $files = scandir($path);
+    foreach ($files as $f) {
+        $filePath = $path . $f;
+        if (!is_file($filePath)) {
+            continue;
         }
+
+        /*
+         * If both files have the same size, check their contents.
+         */
+        if (filesize($filePath) === $size) {
+
+            /*
+             * Check if there are differences using the function we wrote above.
+             */
+            $diff = $this->fileDiff(new \SplFileInfo($filePath), $file);
+
+            /*
+             * Return the files are not different, meaning equal, that is 
+             * already uploaded.
+             */
+            return !$diff;
+        }
+    }
+    return false;
+}
+
+
 
 
 
     public function uploads(FilesRequest $request)
     {
-        /*
+      /*
         * O campo do form com o arquivo tinha o atributo name="file".
         */
         $filetemp = $request->file('file');
@@ -159,7 +194,7 @@ private function fileDiff($a, $b)
         $tipofile = $request->file->getClientOriginalExtension();
         $extensaoarqv =  $request->file->extension();
         // Tamanho do arquivo
-        $tamanho = $request->imagem->getClientSize();
+        //$tamanho = $request->imagem->getClientSize();
         $type = $request->file->getMimeType();
         
         //$path = $request->file->path();
@@ -175,48 +210,27 @@ private function fileDiff($a, $b)
          * Já existe um arquivo igual ao que está sendo enviado?          
          * mudar para varredura no banco
          */
-        if ($this->isAlreadyUploaded($filetemp)) {
-            abort(400, 'Esse mesmo arquivo já foi enviado antes.');
-        }
+        //if ($this->isAlreadyUploaded($filetemp)) {
+        //    abort(400, 'Esse mesmo arquivo já foi enviado antes.');
+       // }
         /*
          * Apenas grava o arquivo depois da verificação.
          */
-        $path = $filetemp->store('uploads'); 
+        //$path = $filetemp->store('uploads'); 
         $upload = $request->file->storeAs('uploads', $request->nome);  //salva no diretorio com o mesmo nome indicado pelo usuario
-        $request->file('filetemp')->store('uploads');                
+        //$request->file('filetemp')->store('uploads');                
         
           /*
          * Insere no banco. 
          */  
-        $files = new file;
-        $files->name        = $request->nome;
-        $files->tipo = $request->tipofile;
-        $files->caminho    = $request->path;
-        $files->conteudo       = $request->conteudo;
-        $files->Validadedoc       = $request->Validadedoc;
-        $files->estado       = $request->estado;
-        $files->industria       = $request->industria;
-        $files->versao       = $request->versao;     
-        $files->save();
-
         
-
-        if ($files)        
-        return redirect()
-                    ->route('home')
-                    ->with('success', 'Categoria inserida com sucesso!');
-                //admin.uploads.upload
-        // Redireciona de volta com uma mensagem de erro
-            return redirect()
-                ->back()
-                ->with('error', 'Falha ao inserir');
-
+        
+        return redirect()->route('home')->with('message', 'Product created successfully!');
+   
     }
 
 
-
-
-public function atualizadoc(Request $request)
+public function atualizadoc(FilesRequest $request)
         {
             $id = $request->input('nome');
 
@@ -224,9 +238,9 @@ public function atualizadoc(Request $request)
              // pegar o o valor da atualização a serfeita
             // status do documento, conteudo   e industria 
             // validar qual será atualização- tipo se o campo estiver vazio não atualizar.
-            $status = $request->input('status');
-            $status = $request->input('status');
-            $status = $request->input('status');
+                $status = $request->input('status');
+                $conteudo = $request->input('conteudo');
+                $industria = $request->input('status');
 
 
 
@@ -236,10 +250,10 @@ public function atualizadoc(Request $request)
                 if (!is_null($status)){
                     DB::table('files')->where('id', $id)->update(array('status'=> $status));                    
                 }    
-                if (!is_null($status)){
+                if (!is_null($conteudo)){
                     DB::table('files')->where('id', $id)->update(array('conteudo'=> $conteudo));                    
                 }  
-                if (!is_null($status)){
+                if (!is_null($industria)){
                     DB::table('files')->where('id', $id)->update(array('industria'=> $industria));                    
                 }    
 
