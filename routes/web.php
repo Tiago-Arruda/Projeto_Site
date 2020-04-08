@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     //arquivos
     Route::get('upload','FilesController@index')->name('admin.Upload.upload');
     Route::post('upload','FilesController@uploads')->name('admin.Upload.upload');
+    Route::post('upload','FilesController@buscar')->name('admin.Upload.busca');
     Route::any('uploadatualiza','FilesController@atualizadoc')->name('uploadatualiza');
          
     //Route:get('cadastro','CadastroController@index')->name('admin.cadastro.cadindex');
