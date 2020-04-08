@@ -18,12 +18,11 @@
 
 @section('content')
   
-    <div>
+    <div class="form-row ">
 
-    <form method="post" class="form-inline" action="{{route('admin.Upload.upload')}}" enctype="multipart/form-data">    
+    <form method="post" class="form-inline" action="{{route('admin.Upload.busca')}}" enctype="multipart/form-data">    
         {{ csrf_field() }} 
-        <div class="row form-inline">
-            
+        <div class="row form-inline">            
                 <div class="input-group margin ">
                     <label for="inputEmail3" class="col-sm-6 col-form-label">Procurar por nome</label>
                     <input type="text" name="_nome"  placeholder="Digite o nome" class="form-control ol-xs-4 input-sm" />
@@ -32,13 +31,16 @@
                                 </span>
                                 </button>
                             </span>
-                </div>
-            
+                </div>                           
+        </div>
+    </form>
+    <form method="post" class="form-inline" action="{{route('admin.Upload.busca')}}" enctype="multipart/form-data">    
+        {{ csrf_field() }}                     
                 <div class="input-group margin ">
                     <label for="inputEmail3" class="col-sm-6 col-form-label">Procurar por conteúdo</label>
                         <input type="text" name="_conteudo"  placeholder="#" class="form-control " />
                                 <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-info btn-flat" nome="btn-busca">Procurar  <span class="glyphicon glyphicon-search">
+                                    <button type="submit" class="btn btn-warning btn-flat" nome="btn-busca">Procurar  <span class="glyphicon glyphicon-search">
                                     </span>
                                     </button>
                                 </span>
@@ -46,8 +48,7 @@
             </div>
         </div>
     </form>
-
-
+<p>
     <!--tabela resultado-->
     @if(session('error'))
     <div class="alert alert-danger">
@@ -62,8 +63,7 @@
   
    @if(!empty($file)) 
         <div class="box">
-            <div class="box-header">
-                
+            <div class="box-header">                
             <div class="box-body">
                 <table class="table table-bordered table-hover">
                     <thead class="thead thead-dark">
@@ -73,7 +73,10 @@
 
                             <th>status</th>
                             <th>Conteudo</th>
-                          
+                            <th>Industria</th>
+                            <th>Validade</th>
+                            <th>Versão</th>
+                            <th>Ação</th>
                             
                             
                         </tr>
@@ -81,31 +84,28 @@
                     <tbody>
                         @forelse($file as $Item)
                             <tr>
-                                <td>{{$Item->nome}}</td>
-                                <td>{{$Item->status}}</td>
+                                <td>{{$Item->name}}</td>
+                                <td>{{$Item->estado}}</td>
                                 <td>{{$Item->conteudo}}</td>
-                            </tr>
-                             
+                                <td>{{$Item->industria}}</td>
+                                <td>{{$Item->Validadedoc}}</td>
+                                <td>{{$Item->versao}}</td>                                
+                                <td><button class="btn btn-primary">Editar</button>
+                                    <button class="btn btn-secondary">Visualizar</button> 
+                                    <button class="btn btn-danger">Excluir</button>   
+                                                                    
+                                </td>
+                            </tr>                             
                         @empty
                         @endforelse                         
                     </tbody>
                 </table>                
             </div>  
+
+
         </div>
-
-
-
-        <form style="display:inline-block; width:100px;" method="GET" action="{{route('uploadatualiza')}}">
-                {!! csrf_field()!!}
-                <input style="display:none;"  type="text" name="nome" value="{{$file[0]->id}}" placeholder="Digite o nome" class="form-control">
-                <span class="input-group-btn">
-                <input type="text" name="nome" value="{{$file[0]->id}}" placeholder="Digite o status" class="form-control">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-success" name="btn-add">Modificar <span class="fa fa-plus">
-                </span>
-            </button>
-          </span>
-        </form>
+ </div>
+    
     @endif 
 <p>
 
@@ -155,7 +155,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-block btn-success">
-                    <i class="fa fa-save"></i> Salvar
+                    <i class="fa fa-save"></i> Cadastrar Documento
                 </button>
                 
             </div>
