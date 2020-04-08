@@ -6,13 +6,13 @@ use App\Documentos;
 use Illuminate\Http\Request;
 use App\Http\Requests\FilesRequest;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\DB;
 /*
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Admin;
@@ -40,7 +40,24 @@ class FilesController extends Controller
     public function buscar(Request $request)
     {
         $_nome = $request->input('_nome');
-        if(!is_null($p_nome)){
+        $_conteudo = $request->input('_conteudo');
+        
+        if ((is_null($_nome))and(is_null($_conteudo))){
+            return redirect()
+            ->route('admin.Upload.upload')
+            ->with('error', 'Preencha o campo de busca Corretamente'); 
+            }
+            elseif(is_null($_nome)){          
+                    $file = DB::table('files')
+                    ->where('conteudo', 'like',  "%" . $_conteudo)
+                    ->get();
+                }elseif(is_null($_conteudo)){
+                    $file = DB::table('files')
+                    ->where('name', 'like',  "%" . $_nome)
+                    ->get();
+                }
+
+       /* if((!is_null($_nome))){
         $file = DB::table('files')
             ->where('name', 'like',  "%" . $_nome)
             ->get();
@@ -49,12 +66,11 @@ class FilesController extends Controller
             ->route('admin.Upload.upload')
             ->with('error', 'Preencha o campo de busca Corretamente'); 
         }
+        */       
+            
         if (!empty($file['0']->id)){
 
-                 $id = $file['0']->id;
-                 $id = $status['0']->status;
-                 $id = $conteudo['0']->conteudo;
-           
+                 $id = $file['0']->id;                            
              return 
                     view('admin.Upload.upload')->with('file', $file)->with('id',$id);                    
         }else{
@@ -199,11 +215,6 @@ private function isAlreadyUploaded($file)
         //$tamanho = $request->imagem->getClientSize();
         $type = $request->file->getMimeType();
         
-        //$path = $request->file->path();
-        //$extension = $request->file->extension();
-
-
-
         //verifica se tem arquivo a enviar       
         if (empty($filetemp)) {
             abort(400, 'Nenhum arquivo foi enviado.');
