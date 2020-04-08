@@ -23,19 +23,18 @@ class FilesRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => sprintf(
-              'required|string|unique:posts,title,%s', $this->post->title
-            ),
-            'description' => 'required|min:8|max:255|string',
-        ];
+            return [
+                'file' => 'required',
+                
+            ];
+        
     }
 
     public function messages()
     {
         return [
             'file' => 'required',
-            'nome' => 'required|email'
+           
         ];
     }
 
