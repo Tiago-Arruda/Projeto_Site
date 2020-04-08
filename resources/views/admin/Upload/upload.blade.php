@@ -18,7 +18,34 @@
 
 @section('content')
   
-    <div class="form-row ">
+
+<div class="container">
+   <!--tabela resultado-->
+   @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+  @endif
+
+
+   <!--Implementar o limpar pesquisa e  editar pela pesquisa realizada -->
+
+
+    <ul class="nav nav-tabs">
+      <li class="active link"><a href="#firsttab" class="btn btn-warning" data-toggle="tab">Pesquisar Documentos</a></li>
+      <li class=" link"><a href="#secondtab" class="btn btn-success" data-toggle="tab"> Cadastrar Novo documento</a></li>
+      <li><a href="#thirdtab" class="btn btn-info" data-toggle="tab">Outros</a></li>
+    </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="firsttab">
+
+ 
+<div class="form-row ">
 
     <form method="post" class="form-inline" action="{{route('admin.Upload.busca')}}" enctype="multipart/form-data">    
         {{ csrf_field() }} 
@@ -48,19 +75,7 @@
             </div>
         </div>
     </form>
-<p>
-    <!--tabela resultado-->
-    @if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-    @endif
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-  @endif
-  
+<p>    
    @if(!empty($file)) 
         <div class="box">
             <div class="box-header">                
@@ -101,18 +116,12 @@
                     </tbody>
                 </table>                
             </div>  
-
-
-        </div>
- </div>
-    
+        </div>  
+    </div>
     @endif 
-<p>
-
-
-<!-- /Cadastrar Arquivo  {{route('admin.Upload.upload')}}-->
-
-        <form method="post"  name="formupload" placeholder="Form Cadastrar Arquivos"
+        
+    <div class="tab-pane" id="secondtab">
+          <form method="post"  name="formupload" placeholder="Form Cadastrar Arquivos"
             action="{{route('admin.Upload.upload')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="row">
@@ -171,8 +180,73 @@
                 </div>
             @endif
         </form>
-    <div>
-
+  	  
+    </div>
+ 
+    <div class="tab-pane" id="thirdtab">
     
-    
+    <form method="post"  name="formEditar" placeholder="Form Cadastrar Arquivos"
+             enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="row">
+                <div class="col-12">
+                    <div class="card bg-success">                        
+                            <p class="mb-0">Editar</p>                        
+                    </div>
+                </div>
+            </div>
+            <div class="form-row col-md-15">
+                <div class="form-group col-md-4">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Nome</label>
+                    <input type='text' class="form-control" id="nome" name="nome"  placeholder="Nome do Arquivo"  />  
+                    
+                    <label for="inputEmail3" class="col-sm-4 col-form-label " >Industria</label>          
+                    <input type='text' class="form-control" id="industria" name="industria"  placeholder="Nome da Industria"/>            
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Validade</label>
+                    <input type='date' class="form-control" id="Validadedoc" name="Validadedoc"  />
+                    <label for="inputEmail3" class="col-sm-4 col-form-label" >Conteudo</label>
+                    <input type='text' class="form-control"  id="conteudo" name="conteudo"  placeholder="Descreva o conteudo espaçando com #" />
+                
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputEmail3" class="col-sm-7 col-form-label">Situação</label>
+                    <select type='text' class="form-control"  id="estado" name="estado">
+                            <option value="" >Escolha opção</option>
+                            <option value="0" >Ativo</option>
+                            <option value="1">Inativo</option>
+                            <option value="2">Cancelado</option>                            
+                    </select>
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Versão</label>
+                    <input type='text' class="form-control" id="versao" name="versao"  />     
+                </div>
+                <div class="form-group col-md-10">                                  
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Arquivos</label>
+                    <input type='file'  class="form-control" id="file" name="file" accept="image/*" />
+                </div>
+                
+                <button type="submit" class="btn btn-block btn-success">
+                    <i class="fa fa-save"></i> Cadastrar Documento
+                </button>
+                
+            </div>
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+        
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+        </form>
+    </div>
+ 
+</div>
+</div>        
+        
 @stop
