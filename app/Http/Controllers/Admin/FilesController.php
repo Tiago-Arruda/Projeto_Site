@@ -3,21 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Documentos;
+use Illuminate\Http\Request;
+use App\Http\Requests\FilesRequest;
+use App\Http\Controllers\Controller;
+
+/*
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-
-use App\Http\Requests\FilesRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Admin;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
-
+*/
 
 class FilesController extends Controller
 {
@@ -177,7 +179,7 @@ private function isAlreadyUploaded($file)
 
 
 
-    public function uploads(FilesRequest $request)
+    public function uploads(Request $request)
     {
       /*
         * O campo do form com o arquivo tinha o atributo name="file".
@@ -185,9 +187,9 @@ private function isAlreadyUploaded($file)
         $filetemp = $request->file('file');
         //$formupload = $request->form('formupload');        
         // Se informou o arquivo, retorna um boolean        
-        $filetemp = $request->hasFile('file');
+        $filetemph = $request->hasFile('file');
         // Se é válido, retorna um boolean
-        $filetemp = $request->file('file')->isValid();        
+        $filetempb = $request->file('file')->isValid();        
         // Retorna o nome original do arquivo
         $nomearq = $request->file->getClientOriginalName();
         // Extensão do arquivo
@@ -224,7 +226,17 @@ private function isAlreadyUploaded($file)
          * Insere no banco. 
          */  
         
-        
+        $files = new Documentos;
+        $files->name        = $request->nome;
+        $files->tipo = $tipofile;
+        $files->caminho    = $upload;
+        $files->conteudo       = $request->conteudo;
+        $files->Validadedoc       = $request->Validadedoc;
+        $files->estado       = $request->estado;
+        $files->industria       = $request->industria;
+        $files->versao       = $request->versao;     
+        $files->save();
+
         return redirect()->route('home')->with('message', 'Product created successfully!');
    
     }
