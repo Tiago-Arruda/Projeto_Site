@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 
-
-
 class CadastroController extends Controller
 {
    
