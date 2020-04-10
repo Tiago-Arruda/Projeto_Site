@@ -40,19 +40,6 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
 
 });
 
-
-
-/*$this->group(['middleware' => ['auth','admin.auth'], 'namespace' => 'Admin', 'prefix'=> 'admin'], function(){
-        
-    $this->get('cadastro','CadastroController@index')->name('admin.cadastro.cadindex');
-    $this->post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
-    Route::any('cadastroup','CadastroController@atualiza')->name('cadastroup');
-    Route::any('cadastrodown','CadastroController@excluir')->name('cadastrodown');
-   
-    });*/
-
-
-  
 //Rotas para Upar arquivos
 Route::get('upload', 'HomeController@upload')->name('upload');
 
