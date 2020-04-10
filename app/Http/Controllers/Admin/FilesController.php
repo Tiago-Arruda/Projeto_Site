@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Documentos;
+use Illuminate\Http\Request;
+use App\Http\Requests\FilesRequest;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-
-use Illuminate\Http\Request; 
-use Symfony\Component\HttpFoundation\Response;
-
+use Illuminate\Support\Facades\DB;
 
 
 class FilesController extends Controller
@@ -28,28 +24,43 @@ class FilesController extends Controller
 
 
 
+    //Consulta no Banco  -  
     public function buscar(Request $request)
     {
         $_nome = $request->input('_nome');
-        if(!is_null($p_nome)){
-        $user = DB::table('files')
-            ->where('name', 'like',  "%" . $p_nome)
+        $_conteudo = $request->input('_conteudo');
+        
+        if ((is_null($_nome))and(is_null($_conteudo))){
+            return redirect()
+            ->route('admin.Upload.upload')
+            ->with('error', 'Preencha o campo de busca Corretamente'); 
+            }
+            elseif(is_null($_nome)){          
+                    $file = DB::table('files')
+                    ->where('conteudo', 'like',  "%" . $_conteudo)
+                    ->get();
+                }elseif(is_null($_conteudo)){
+                    $file = DB::table('files')
+                    ->where('name', 'like',  "%" . $_nome)
+                    ->get();
+                }
+
+       /* if((!is_null($_nome))){
+        $file = DB::table('files')
+            ->where('name', 'like',  "%" . $_nome)
             ->get();
         }else{
             return redirect()
             ->route('admin.Upload.upload')
             ->with('error', 'Preencha o campo de busca Corretamente'); 
         }
+        */       
+            
         if (!empty($file['0']->id)){
 
-                 $id = $file['0']->id;
-
-                $ide = $id;       
-           
+                 $id = $file['0']->id;                            
              return 
-                    view('admin.Upload.upload')->with('file', $file)->with('id',$id);
-                    
-
+                    view('admin.Upload.upload')->with('file', $file)->with('id',$id);                    
         }else{
             return redirect()
                 ->route('admin.Upload.upload')
@@ -60,33 +71,19 @@ class FilesController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'caminho' => ['required', 'string', 'caminho'],            
-        ]);
-    }
+    //protected function validator(array $data)
+    //{
+   //     return Validator::make($data, [
+   //         'name' => ['required', 'string', 'max:100'],
+    //        'caminho' => ['required', 'string', 'caminho'],            
+    //    ]);
+   // }
 
 /**
  * Compara o conteúdo de dois arquivos para verificar se há diferenças.
@@ -130,29 +127,161 @@ private function fileDiff($a, $b)
 
     return $diff;
 }
+
+
+/**
+ * Check if the given file was already uploaded.
+ *
+ * It loops through all files in the uploads directory, looking for anyone that 
+ * could be equal to the currently uploaded file.
+ *
+ * @param  SplFileInfo $file The file to check.
+ * @return bool Indicates if the file was already upload.
+ */
+private function isAlreadyUploaded($file)  
+{
+    
+    $size = $file->get_size();
+
+    /*
+     * The directory where the files are stored.
+     */
+    $path = storage_path('app/public/uploads/');
+
+    if (!is_dir($path)) {
+        return false;
+    }
+
+    $files = scandir($path);
+    foreach ($files as $f) {
+        $filePath = $path . $f;
+        if (!is_file($filePath)) {
+            continue;
+        }
+
+        /*
+         * If both files have the same size, check their contents.
+         */
+        if (filesize($filePath) === $size) {
+
+            /*
+             * Check if there are differences using the function we wrote above.
+             */
+            $diff = $this->fileDiff(new \SplFileInfo($filePath), $file);
+
+            /*
+             * Return the files are not different, meaning equal, that is 
+             * already uploaded.
+             */
+            return !$diff;
+        }
+    }
+    return false;
+}
+
+
+
+
+
     public function uploads(Request $request)
     {
-        /*
+      /*
         * O campo do form com o arquivo tinha o atributo name="file".
         */
-        $file = $request->file('file');
-
-        if (empty($file)) {
+        $filetemp = $request->file('file');
+        //$formupload = $request->form('formupload');        
+        // Se informou o arquivo, retorna um boolean        
+        $filetemph = $request->hasFile('file');
+        // Se é válido, retorna um boolean
+        $filetempb = $request->file('file')->isValid();        
+        // Retorna o nome original do arquivo
+        $nomearq = $request->file->getClientOriginalName();
+        // Extensão do arquivo
+        $tipofile = $request->file->getClientOriginalExtension();
+        $extensaoarqv =  $request->file->extension();
+        // Tamanho do arquivo
+        //$tamanho = $request->imagem->getClientSize();
+        $type = $request->file->getMimeType();
+        
+        //verifica se tem arquivo a enviar       
+        if (empty($filetemp)) {
             abort(400, 'Nenhum arquivo foi enviado.');
         }
-
-/*
-         * Já existe um arquivo igual ao que está sendo enviado?
+        /*
+         * Já existe um arquivo igual ao que está sendo enviado?          
+         * mudar para varredura no banco
          */
-        if ($this->isAlreadyUploaded($file)) {
-            abort(400, 'Esse mesmo arquivo já foi enviado antes.');
-        }
-
- /*
+        //if ($this->isAlreadyUploaded($filetemp)) {
+        //    abort(400, 'Esse mesmo arquivo já foi enviado antes.');
+       // }
+        /*
          * Apenas grava o arquivo depois da verificação.
          */
-        $path = $file->store('uploads');
+        //$path = $filetemp->store('uploads'); 
+        $upload = $request->file->storeAs('uploads', $request->nome);  //salva no diretorio com o mesmo nome indicado pelo usuario
+        //$request->file('filetemp')->store('uploads');                
+        
+          /*
+         * Insere no banco. 
+         */  
+        
+        $files = new Documentos;
+        $files->name        = $request->nome;
+        $files->tipo = $tipofile;
+        $files->caminho    = $upload;
+        $files->conteudo       = $request->conteudo;
+        $files->Validadedoc       = $request->Validadedoc;
+        $files->estado       = $request->estado;
+        $files->industria       = $request->industria;
+        $files->versao       = $request->versao;     
+        $files->save();
 
-        // Faça qualquer coisa com o arquivo enviado....
+        return redirect()->route('home')->with('message', 'Product created successfully!');
+   
     }
+
+
+public function atualizadoc(FilesRequest $request)
+        {
+            $id = $request->input('nome');
+
+
+             // pegar o o valor da atualização a serfeita
+            // status do documento, conteudo   e industria 
+            // validar qual será atualização- tipo se o campo estiver vazio não atualizar.
+                $status = $request->input('status');
+                $conteudo = $request->input('conteudo');
+                $industria = $request->input('status');
+
+
+
+            if (!is_null($id)){
+
+                //Validação individual-avaliar se isso vai perder tempo ou pesar o banco
+                if (!is_null($status)){
+                    DB::table('files')->where('id', $id)->update(array('status'=> $status));                    
+                }    
+                if (!is_null($conteudo)){
+                    DB::table('files')->where('id', $id)->update(array('conteudo'=> $conteudo));                    
+                }  
+                if (!is_null($industria)){
+                    DB::table('files')->where('id', $id)->update(array('industria'=> $industria));                    
+                }    
+
+                //DB::table('files')->where('id', $id)->update(array('status'=> $status,'conteudo'=> $conteudo,'industria'=> $industria,));
+
+                return redirect()
+                    ->route('admin.uploads.upload')
+                    ->with('success', 'Documento atualizado com sucesso!');
+
+            }else{
+
+                return redirect()
+                    ->route('admin.uploads.upload')
+                    ->with('error', 'Ocorreu um erro');
+
+            }
+
+    }
+
 }

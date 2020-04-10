@@ -210,21 +210,24 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-            
-        ],
+        //[
+        //    'text' => 'search',
+        //    'search' => true,
+        //    'topnav' => true,
+        //    
+        //],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-           
+    
+        ['header' => 'ARQUIVOS',
+            'text'       => 'Usuarios',
+            'icon_color' => 'red',], 
         [
-            'text'        => 'Arquivos',
-            'url'         => 'usuarios/Download',
+            'text'        => 'Documentos',
+            'url'         => 'users/down',
             'icon_color' => 'warning',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'Baixar',

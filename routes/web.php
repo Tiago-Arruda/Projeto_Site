@@ -19,8 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Criar um grupo de rotas de usuarios 
+Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
+
+
 
 //rotas reutilizadas, para acesso de administrador.
 Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'prefix'=> 'admin'], function () {
@@ -29,14 +33,14 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     Route::post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
     //arquivos
     Route::get('upload','FilesController@index')->name('admin.Upload.upload');
-    Route::post('upload','FilesController@index')->name('admin.Upload.upload');
+    Route::post('upload','FilesController@uploads')->name('admin.Upload.upload');
+    Route::post('upload','FilesController@buscar')->name('admin.Upload.busca');
+    Route::any('uploadatualiza','FilesController@atualizadoc')->name('uploadatualiza');
          
     //Route:get('cadastro','CadastroController@index')->name('admin.cadastro.cadindex');
     //$this->post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
     Route::any('cadastroup','CadastroController@atualiza')->name('cadastroup');
     Route::any('cadastrodown','CadastroController@excluir')->name('cadastrodown');
-
-
 
 });
 

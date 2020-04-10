@@ -85,8 +85,7 @@
                 
             </div>  
         </div>
-        
-         
+                 
         <form style="display:inline-block; width:100px;" method="GET" action="{{route('cadastroup')}}">
                 {!! csrf_field()!!}
                 <input style="display:none;"  type="text" name="nome" value="{{$user[0]->id}}" placeholder="Digite o nome" class="form-control">
