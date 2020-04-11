@@ -227,7 +227,7 @@ return [
             'icon_color' => 'red',], 
         [
             'text'        => 'Documentos',
-            'url'         => 'users/down',
+            'url'         => 'users/downd',
             'icon_color' => 'warning',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'Baixar',
