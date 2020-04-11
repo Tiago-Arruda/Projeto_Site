@@ -218,7 +218,7 @@ private function isAlreadyUploaded($file)
          * Apenas grava o arquivo depois da verificação.
          */
         //$path = $filetemp->store('uploads'); 
-        $upload = $request->file->storeAs('uploads', $request->nome);  //salva no diretorio com o mesmo nome indicado pelo usuario
+        $upload = $request->file->storeAs('uploads', $request->nome+"."+$tipofile);  //salva no diretorio com o mesmo nome indicado pelo usuario
         //$request->file('filetemp')->store('uploads');                
         
           /*
