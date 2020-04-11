@@ -39,11 +39,10 @@
             <div class="box-header">                
             <div class="box-body">
                 <table class="table table-bordered table-hover">
-                    <thead class="thead thead-dark">
+                    <thead class="thead thead-dark responsive">
                         <tr>
-                            
+                            <th style="display:none;">Id</th>
                             <th>Nome</th>
-
                             <th>status</th>
                             <th>Conteudo</th>
                             <th>Industria</th>
@@ -57,26 +56,27 @@
                     <tbody>
                         @forelse($file as $Item)
                             <tr>
+                                <td style="display:none;" id="{{$Item->id}}" value="{{$Item->id}}">{{$Item->id}}</td>
                                 <td>{{$Item->name}}</td>
                                 <td>{{$Item->estado}}</td>
                                 <td>{{$Item->conteudo}}</td>
                                 <td>{{$Item->industria}}</td>
                                 <td>{{$Item->Validadedoc}}</td>
                                 <td>{{$Item->versao}}</td>                                
-                                <td><button class="btn btn-primary">Editar</button>
-                                    <button class="btn btn-secondary">Visualizar</button> 
-                                    <button class="btn btn-danger">Excluir</button>   
-                                                                    
+                                <td>
+                                                              
+                                    
                                 </td>
                             </tr>                             
                         @empty
                         @endforelse                         
                     </tbody>
                 </table>                
+                
             </div>  
         </div>
 <!-- essa div precisa ser  vista ainda-->
- </div>
+ </div> 
  @endif 
 
 
