@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class FilesDownController extends Controller
 {
@@ -21,41 +22,8 @@ class FilesDownController extends Controller
     public function index()
     {
      
-        $indUsers = Auth::user()->industria;
-       
-        if ($indUsers<>""){                                   
-            
-            $file = DB::table('files')        
-            ->where(function($query){
-                $industriaUsers = Auth::user()->industria;
-
-                     return $query->where('industria', $industriaUsers);
-
-                }
-            )
-            ->get();
-                        
-            $id = $file['0']->id;                                                      
-            
-            if($file>0) {                        
-                return view('users.downloads.down')->with('file', $file)->with('id',$id);
-            }
-            else{
-                return redirect()
-                ->route('home')
-                ->with('error', 'verifique seu cadastro com o Administrador'); 
-            }
-
-
-            
-         }else{            
-            return redirect()
-            ->route('home')
-            ->with('error', 'Registro não encontrado');              
-         }
         /// fazer o filtro por industria                                
     }    
-
 
    //fim da controller 
 
@@ -72,4 +40,6 @@ class FilesDownController extends Controller
                     ->get();                                                  
         
         */  
+
+       
 }
