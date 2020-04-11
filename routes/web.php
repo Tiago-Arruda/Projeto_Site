@@ -23,6 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Criar um grupo de rotas de usuarios 
 Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
+//Route::post('bdown','FilesDownController@bdown')->name('users.downloads.down');
+
+//Rotas para Upar arquivos
+//Route::get('upload', 'HomeController@upload')->name('upload');
 
 
 
@@ -44,7 +48,6 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
 
 });
 
-//Rotas para Upar arquivos
-Route::get('upload', 'HomeController@upload')->name('upload');
+
 
   
