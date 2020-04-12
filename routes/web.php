@@ -23,8 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Criar um grupo de rotas de usuarios 
 Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
-Route::post('users/down','FilesDownController@show')->name('users.downloads.baixar');
+Route::any('filedown','FilesDownController@show')->name('filedown');
 
+
+
+//Route::post('users/down','FilesDownController@show')->name('users.downloads.baixar');
+//Route::any('users.downloads.baixar','CadastroController@show')->name('users.downloads.down');
 //Route::get('users/down/{id}','FilesDownController@show')->name('dowloadfile');
 
 //Rotas para Upar arquivos
