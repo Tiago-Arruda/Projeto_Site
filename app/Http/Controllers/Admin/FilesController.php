@@ -57,7 +57,6 @@ class FilesController extends Controller
         */       
             
         if (!empty($file['0']->id)){
-
                  $id = $file['0']->id;                            
              return 
                     view('admin.Upload.upload')->with('file', $file)->with('id',$id);                    
