@@ -62,30 +62,9 @@ class FilesDownController extends Controller
     * @return Response A instância da response.
     */
    
-        public function show(Request $request)
+        public function show()
         {
-            $_idfile = $request->input('idfile');   
-
-            if(empty(_idfile)){
-                $file = DB::table('files')        
-                ->where('id', 'like',  "%" . $_idfile)
-                ->get();
-
-            }else
-            {
-                return redirect()
-                ->route('home')
-                ->with('error', 'Registro não encontrado');
-            }
-
-            $arq = $file['0']->caminho;
-            $arqt = $file['0']->tipo;
-            //$arqb = storage_path('app/'.$arq+"."+$arqt);
-
-            $exists = Storage::disk('app/')->exists($arq);
-
-            $arqb = storage_path('app/'.$arq);
-            return response()->download($arqb);
+            return view('admin.cadastro.cadindex');
                         //return response()->download($arqb);
                         //return Storage::download('file.jpg', $name, $headers);
 
