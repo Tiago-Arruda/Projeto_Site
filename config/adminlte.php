@@ -181,6 +181,8 @@ return [
     
     'upload_url' => 'upload',
 
+    'dowload_url' => 'down',
+
     'profile_url' => false,
 
     /*
@@ -221,13 +223,14 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-    
-        ['header' => 'ARQUIVOS',
+        ['header' => 'ARQUIVOS'],
+        [
             'text'       => 'Usuarios',
-            'icon_color' => 'red',], 
+            'icon_color' => 'red',
+        ], 
         [
             'text'        => 'Documentos',
-            'url'         => 'users/downd',
+            'url'         => 'users/down',
             'icon_color' => 'warning',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'Baixar',
@@ -250,7 +253,7 @@ return [
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'icon_color' => 'info',
-            'label'       => 4,
+            'label'       => 5,
             'label_color' => 'success',
         ],   
                             
