@@ -67,22 +67,31 @@
                                 <td>{{$Item->Validadedoc}}</td>
                                 <td>{{$Item->versao}}</td>                                                                
                                 <td>
-                                <img class="card-img-top img-responsive"  src="{{Storage::url($Item->caminho)}}.jpg" />
+                                <img  style="width:70px;" src="{{Storage::url($Item->caminho)}}.jpg" />
                                 </td>   
                                 <td>
-                                    <form style="display:inline; width:100px;" method="post" 
-                                    action="{{route('users.downloads.baixar')}}">
-                                        {!! csrf_field()!!}
-                                            <input style="display:none;"  type="text" name="_idfile" value="{{$file[0]->id}}" 
-                                            class="form-control">
-                                            <span class="input-group-btn">                                        
-                                                <button type="button" class="btn btn-success" name="btn-b" ><span class="fa fa-download">
-                                                </span>
-                                            </button>
-                                            <button type="button" class="btn btn-info" name="btn-v"><span class="fa fa-eye">
-                                            </span></button>
-                                    </span>
-                                    </form>                                                                                           
+                <form style="display:inline; width:100px;" method="GET" action="{{route('filedown')}}">
+                    {!! csrf_field()!!}
+                        <input style="display:none;"  type="text" name="_idfile" value="{{$file[0]->id}}" 
+                        class="form-control">
+                        <span class="input-group-btn">                                        
+                            <button type="button" class="btn btn-success" name="btn-b" ><span class="fa fa-download">
+                            </span>
+                            </button>
+                </span>
+                </form>         
+                <form style="display:inline; width:100px;" method="GET" action="{{route('cadastrodown')}}">
+                    {!! csrf_field()!!}
+                        <input style="display:none;"  type="text" name="_idfile" value="{{$file[0]->id}}" 
+                        class="form-control">
+                        <span class="input-group-btn">                                        
+                            <button type="button" class="btn btn-info" name="btn-v">
+                                <span class="fa fa-eye"></span>
+                            </button>
+                        </span>
+                        
+                </span>
+                </form>                                                                                    
                                 </td>
                             </tr>                             
         @empty
