@@ -64,7 +64,7 @@ class FilesDownController extends Controller
    
         public function show()
         {
-            return view('admin.cadastro.cadindex');
+            return view('home');
                         //return response()->download($arqb);
                         //return Storage::download('file.jpg', $name, $headers);
 
