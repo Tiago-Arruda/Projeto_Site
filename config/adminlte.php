@@ -253,7 +253,7 @@ return [
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'icon_color' => 'info',
-            'label'       => 5,
+            'label'       => '5',
             'label_color' => 'success',
         ],   
                             
