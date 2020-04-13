@@ -18,7 +18,6 @@ class CadastroController extends Controller
 {
    
     public $ide = 0;
-
     
     public function index()
     {
