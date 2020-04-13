@@ -22,17 +22,23 @@ class FilesController extends Controller
         return view('admin.Upload.upload');
     }    
 
-
-
     //Consulta no Banco  -  
-    public function buscar(Request $request)
+    public function buscar()
+    {
+       
+        return view('admin.Upload.busca');  
+    }
+
+
+
+    public function search(Request $request)
     {
         $_nome = $request->input('_nome');
         $_conteudo = $request->input('_conteudo');
         
         if ((is_null($_nome))and(is_null($_conteudo))){
             return redirect()
-            ->route('admin.Upload.upload')
+            ->route('admin.Upload.busca')
             ->with('error', 'Preencha o campo de busca Corretamente'); 
             }
             elseif(is_null($_nome)){          
@@ -45,28 +51,32 @@ class FilesController extends Controller
                     ->get();
                 }
 
-       /* if((!is_null($_nome))){
-        $file = DB::table('files')
-            ->where('name', 'like',  "%" . $_nome)
-            ->get();
-        }else{
-            return redirect()
-            ->route('admin.Upload.upload')
-            ->with('error', 'Preencha o campo de busca Corretamente'); 
-        }
-        */       
+                                            /* if((!is_null($_nome))){
+                                                $file = DB::table('files')
+                                                    ->where('name', 'like',  "%" . $_nome)
+                                                    ->get();
+                                                }else{
+                                                    return redirect()
+                                                    ->route('admin.Upload.upload')
+                                                    ->with('error', 'Preencha o campo de busca Corretamente'); 
+                                                }
+                                                */       
             
-        if (!empty($file['0']->id)){
-                 $id = $file['0']->id;                            
-             return 
-                    view('admin.Upload.upload')->with('file', $file)->with('id',$id);                    
-        }else{
-            return redirect()
-                ->route('admin.Upload.upload')
-                ->with('error', 'Registro não encontrado');
-            }
+            if (!empty($file['0']->id)){
+                    $id = $file['0']->id;                            
+                return 
+                        view('admin.Upload.busca')->with('file', $file)->with('id',$id);                    
+            }else{
+
+                return redirect()
+                ->route('admin.Upload.busca')
+                ->with('error', 'Registro não encontrado - Tente  Novamente'); 
+                }
           
     }
+
+
+
 
 
 
@@ -145,7 +155,7 @@ private function isAlreadyUploaded($file)
     /*
      * The directory where the files are stored.
      */
-    $path = storage_path('app/public/uploads/');
+    $path = storage_path('storage\app\uploads'); //storage\app\uploads  app/uploads/
 
     if (!is_dir($path)) {
         return false;
@@ -184,6 +194,7 @@ private function isAlreadyUploaded($file)
 
     public function uploads(Request $request)
     {
+      
       /*
         * O campo do form com o arquivo tinha o atributo name="file".
         */
@@ -217,9 +228,10 @@ private function isAlreadyUploaded($file)
          * Apenas grava o arquivo depois da verificação.
          */
         //$path = $filetemp->store('uploads'); 
-        $upload = $request->file->storeAs('uploads', $request->nome+"."+$tipofile);  //salva no diretorio com o mesmo nome indicado pelo usuario
+        $upload = $request->file->storeAs('uploads', $request->nome.".".$extensaoarqv);  //salva no diretorio com o mesmo nome indicado pelo usuario
         //$request->file('filetemp')->store('uploads');                
         
+       // $novonome = $upload.".".$extensaoarqv;
           /*
          * Insere no banco. 
          */  
@@ -251,8 +263,6 @@ public function atualizadoc(FilesRequest $request)
                 $status = $request->input('status');
                 $conteudo = $request->input('conteudo');
                 $industria = $request->input('status');
-
-
 
             if (!is_null($id)){
 
