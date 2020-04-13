@@ -24,12 +24,9 @@ class FilesController extends Controller
 
     //Consulta no Banco  -  
     public function buscar()
-    {
-       
+    {       
         return view('admin.Upload.busca');  
     }
-
-
 
     public function search(Request $request)
     {
@@ -74,12 +71,6 @@ class FilesController extends Controller
                 }
           
     }
-
-
-
-
-
-
     /**
      * Get a validator for an incoming registration request.
      *
