@@ -23,7 +23,7 @@
             
         </style>
     </head>
-    <body style="background-image: url('../img/home3.jpg'); 
+    <body style="background-image: url('../img/logo_site.png'); 
         background-repeat: no-repeat, repeat; background-size: cover; opacity: 0.9;">
         
         <nav class="navbar navbar-inverse">
