@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Projeto_Site',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -181,6 +181,9 @@ return [
     
     'upload_url' => 'upload',
 
+    'busca_url' => 'busca',
+
+
     'dowload_url' => 'down',
 
     'profile_url' => false,
@@ -223,11 +226,9 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => ''],
         ['header' => 'ARQUIVOS'],
-        [
-            'text'       => 'Usuarios',
-            'icon_color' => 'red',
-        ], 
+    
         [
             'text'        => 'Documentos',
             'url'         => 'users/down',
@@ -236,31 +237,24 @@ return [
             'label'       => 'Baixar',
             'label_color' => 'primary',
         ],
-        ['header' => 'CONFIGURAÇÃO'],                        
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',            
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-            
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'icon_color' => 'info',
-            'label'       => '5',
-            'label_color' => 'success',
-        ],   
-                            
+       
+        ['header' => 'CONFIGURAÇÃO'],         
+        [            
+            'text'    => 'Configurar',
+            'icon'    => 'fas fa-fw fa-user-plus',
+            'submenu' => [                               
+                [
+                    'text' => 'Senha',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-fw fa-lock',                    
+                ],  
+
+            ],
+        ],        
         ['header' => 'ADMINISTRADOR'],                
         [
             'can'  => 'authadmin',
-            'text'    => 'Administrador',
+            'text'    => 'Gerenciar Documentos',
             'icon'    => 'fas fa-fw fa-user-plus',
             'submenu' => [
 
@@ -272,12 +266,37 @@ return [
                     'label'       => 'Insert',
                     'label_color' => 'success',
                 ],
-
+                [
+                    'text'        => 'Buscar',
+                    'url'         => 'admin/busca', //add por @gesser, caminho para a viewr de cadastro.
+                    'icon'        => 'fa fa-search',
+                    'icon_color' => 'info',
+                    'label'       => 'Search',
+                    'label_color' => 'success',
+                ],               
+            ],            
+        ],
+        [
+            'can'  => 'authadmin',
+            'text'    => 'Gerenciar Usuário',
+            'icon'    => 'fas fa-fw fa-user-plus',            
+            'submenu' => [ 
+                [
+                    'text' => 'Alterar Industria',
+                    'url'  => 'admin/cadastro', //@tiago, Ver paraalterar o cadastro
+                    'icon' => 'fas fa-sign-out-alt',
+                    'icon_color' => 'warning',
+                    'label'       => 'Alter',
+                    'label_color' => 'success',
+                    
+                ],                  
                 [
                     'text' => 'Cadastro',
                     'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
                     'icon' => 'fas fa-fw fa-plus',
                     'icon_color' => 'primary',
+                    'label'       => 'Add   Adm',
+                    'label_color' => 'success',
                     
                 ],
                 [
@@ -285,6 +304,8 @@ return [
                     'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
                     'icon' => 'fas fa-fw fa-times',
                     'icon_color' => 'red',
+                    'label'       => 'Remove Adm',
+                    'label_color' => 'success',
                      
                 ],
                
