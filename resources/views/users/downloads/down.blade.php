@@ -80,7 +80,7 @@
                             </button>
                 </span>
                 </form>         
-                <form style="display:inline; width:100px;" method="GET" action="{{route('cadastrodown')}}">
+                <form style="display:inline; width:100px;" method="GET">
                     {!! csrf_field()!!}
                         <input style="display:none;"  type="text" name="_idfile" value="{{$file[0]->id}}" 
                         class="form-control">
