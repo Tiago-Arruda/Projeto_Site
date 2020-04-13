@@ -25,31 +25,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
 Route::any('filedown','FilesDownController@show')->name('filedown');
 
-
-
-//Route::post('users/down','FilesDownController@show')->name('users.downloads.baixar');
-//Route::any('users.downloads.baixar','CadastroController@show')->name('users.downloads.down');
-//Route::get('users/down/{id}','FilesDownController@show')->name('dowloadfile');
-
-//Rotas para Upar arquivos
-//Route::get('upload', 'HomeController@upload')->name('upload');
-
-
-
 //rotas reutilizadas, para acesso de administrador.
 Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'prefix'=> 'admin'], function () {
     //usuarios
     Route::get('cadastro','CadastroController@index')->name('admin.cadastro.cadindex');
     Route::post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
-    //arquivos
+    
+    //arquivos @gesser Miguel
     Route::get('upload','FilesController@index')->name('admin.Upload.upload');
     Route::post('upload','FilesController@uploads')->name('admin.Upload.upload');
-    
     Route::get('busca','FilesController@buscar')->name('admin.Upload.busca');
     Route::any('search','FilesController@search')->name('search');
-
-    
-    
     Route::any('uploadatualiza','FilesController@atualizadoc')->name('uploadatualiza');
          
     //Route:get('cadastro','CadastroController@index')->name('admin.cadastro.cadindex');
