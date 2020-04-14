@@ -16,8 +16,9 @@
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/adminlte.min.css">
         <!-- Google Font: Source Sans Pro -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+        <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->                        
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">        
 
         <link rel="apple-touch-icon" sizes="57x57" href="ico/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="ico/apple-icon-60x60.png">
@@ -40,16 +41,13 @@
 
 
 
-
-
-
         <!-- Styles -->
         <style>
             
         </style>
     </head>
-    <body style="background-image: url('../img/home3.jpg'); 
-        background-repeat: no-repeat, repeat; background-size: cover; opacity: 0.9;">
+    <body class="hold-transition sidebar-mini" style="background-image: url('../img/sla_logo3.png'); 
+        background-repeat: no-repeat, repeat; background-size: cover; opacity: 0,5;">
         
         <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
@@ -61,19 +59,15 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#">
-                        <img src="../img/logo_site.png" width="30" heigth="30"/>                        
+                        <img src="../img/sla_logo.png" width="30" heigth="30"/>                        
                         </a>
                     </div>
                     <div class="navbar-header">
                     <a class="navbar-brand active" href="#">                        
                         Franco Engenheiro Agronomo
-                        </a>
-                        
+                        </a>                        
                     </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                       <!-- <ul class="nav navbar-nav">
-                            <li class="active"><a href="/">Home</a></li>
-                        </ul> -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                      
                         <ul class="nav navbar-nav navbar-right active">
                         @if (Route::has('login'))                            
                                 @auth
@@ -91,20 +85,70 @@
                 </div>
             </nav>
 
-
-
-@section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <p class="mb-0">Seja Bem Vindo!</p>
-                </div>
-            </div>
-        </div>
-    </div>
+@section('content')  
 @stop
 
+<div class="container">
 
-    </body>
+<div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <div class="col-sm-3">
+                              
+      </div>
+    <div class="col-sm-6">
+                        <div class="card bg-info">                        
+                            <div class="card-body">                                        
+                                <h2 class="card-title text-center display-4">
+                                    <b>SOLO CERTO <i> Agroambiental</i></b>
+                                </h2>
+                                <div class="card-body text-center">
+                                    <img src="\img\sla_logo.png" class="card-img-top text-center" alt="...">
+                                </div>                        
+                                <div class="card-body">
+                                <h5 class="description-header">Endereço:</h5>
+                                    <p class="card-text">
+                                        Av. Brasil nº 269, Torre H Bloco 4 AP. 1002 <br/>
+                                        Morada do Ouro II  Cep: 78.053 – 734 Cuiabá/MT<br/>
+                                        Contato: francopasa26@gmail.com<br/>                                    
+                                    </p>
+                                </div>                        
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <i>Se  projetas  alguma  coisa,  ela  te  sairá  bem,  e  a luz brilhará  em  
+                                        teus  caminhos. (Jó 22:28)</i>
+                                    </p>
+                                </div>                                   
+                            </div>
+                        </div>
+                        <div class="card bg-danger">                        
+                            <div class="card-body">                                        
+                                <div class="widget-user-header ">                                
+                                    <h1 class="widget-user-username"><b>Franco Pasa</b></h1>
+                                        <h5 ><b><i>CEO - Agronomo Responsável</i></b></h5>
+                                 </div>
+                                <div class="card-body text-center elevation-6">
+                                    <img src="\img\sla_logo.png" 
+                                        class="card-img-top text-center elevation-3" />
+                                </div>                        
+                                <div class="description-block">                                   
+                                        <p class="card-text">                                    
+                                        FRANCO MARCELO PASA HERNANDEZ<br/>                                        
+                                        EMAIL: pasahernandez@yahoo.com.br<br/>
+                                        65 9614 – 2632  
+                                        </p>
+                                    </div>                                                     
+                            </div>
+                        </div>
+    </div>
+    <div class="col-sm-2">
+     
+    </div>
+  </div>
+
+</div>
+
+
+</body>
 </html>
