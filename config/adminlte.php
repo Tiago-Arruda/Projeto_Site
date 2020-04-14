@@ -183,6 +183,7 @@ return [
 
     'busca_url' => 'busca',
 
+    'cadcliente_url' => 'cadcliente',
 
     'dowload_url' => 'down',
 
@@ -268,7 +269,7 @@ return [
                 ],
                 [
                     'text'        => 'Buscar',
-                    'url'         => 'admin/busca', //add por @gesser, caminho para a viewr de cadastro.
+                    'url'         => 'admin/busca', // cadcliente add por @gesser, caminho para a viewr de cadastro.
                     'icon'        => 'fa fa-search',
                     'icon_color' => 'info',
                     'label'       => 'Search',
@@ -278,7 +279,7 @@ return [
         ],
         [
             'can'  => 'authadmin',
-            'text'    => 'Gerenciar Usuário',
+            'text'    => 'Gerenciar Usuários',
             'icon'    => 'fas fa-fw fa-user-plus',            
             'submenu' => [ 
                 [
@@ -311,7 +312,22 @@ return [
                
             ],
         ],
-        
+        [
+            'can'  => 'authadmin',
+            'text'    => 'Cadastros',
+            'icon'    => 'fas fa-fw fa-user-plus',            
+            'submenu' => [ 
+                [
+                    'text' => 'clientes',
+                    'url'  => 'admin/clientes',
+                    'icon' => 'fas fa-sign-out-alt',
+                    'icon_color' => 'info',
+                    'label'       => 'Clientes',
+                    'label_color' => 'success',
+                    
+                ],                                                 
+            ],
+        ],
             
       /*  
         ['header' => 'labels'],
