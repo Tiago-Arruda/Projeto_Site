@@ -43,6 +43,9 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     Route::any('search','FilesController@search')->name('search');
     Route::any('uploadatualiza','FilesController@atualizadoc')->name('uploadatualiza');
 
+
+    
+
     //arquivos @gesser Miguel
     Route::get('clientes','ClientesController@index')->name('admin.clientes.clientes');
     Route::any('pesquisa','ClientesController@pesquisa')->name('pesquisa');
