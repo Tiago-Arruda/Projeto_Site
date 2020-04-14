@@ -41,48 +41,48 @@
                 <table class="table table-bordered table-hover">
                     <thead class="thead thead-dark responsive">
                         <tr>
-                            <th style="display:none;">Id</th>
+                            <th >Id</th>
                             <th>Nome</th>
                             <th>status</th>
                             <th>Conteudo</th>
                             <th>Industria</th>
                             <th>Validade</th>
-                            <th>Versão</th>                                                   
+                            <th>Versão</th> 
+                            <th>caminho</th>                                                   
                             <th>Imagem</th>
-                            <th>Ação</th>
-                            
-                            
-                            
+                            <th>Ação</th>  
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($file as $Item)
                             <tr>
-                                <td style="display:none;" id="{{$Item->id}}" value="{{$Item->id}}">
+                                <!--style="display:none;"-->
+                                <td  id="{{$Item->id}}" value="{{$Item->id}}">
                                     {{$Item->id}}</td>
                                 <td>{{$Item->name}}</td>
                                 <td>{{$Item->estado}}</td>
                                 <td>{{$Item->conteudo}}</td>
                                 <td>{{$Item->industria}}</td>
-                                <td>{{$Item->Validadedoc}}</td>
-                                <td>{{$Item->versao}}</td>                                                                
+                                <td>{{$Item->Validadedoc}}</td>                                
+                                <td>{{$Item->versao}}</td>     
+                                <td>{{$Item->caminho}}</td>                                                           
                                 <td>
                                 <img  style="width:70px;" src="{{Storage::url($Item->caminho)}}.jpg" />
                                 </td>   
                                 <td>
                 <form style="display:inline; width:100px;" method="GET" action="{{route('filedown')}}">
                     {!! csrf_field()!!}
-                        <input style="display:none;"  type="text" name="_idfile" value="{{$file[0]->id}}" 
+                        <input style="display:none;"  type="text" name="_idfile" value=" {{$Item->id}}" 
                         class="form-control">
                         <span class="input-group-btn">                                        
-                            <button type="button" class="btn btn-success" name="btn-b" ><span class="fa fa-download">
+                            <button type="submit" class="btn btn-success" name="btn-b" ><span class="fa fa-download">
                             </span>
                             </button>
                 </span>
                 </form>         
                 <form style="display:inline; width:100px;" method="GET">
                     {!! csrf_field()!!}
-                        <input style="display:none;"  type="text" name="_idfile" value="{{$file[0]->id}}" 
+                        <input style="display:none;"  type="text" name="_idfile" value=" {{$Item->id}}" 
                         class="form-control">
                         <span class="input-group-btn">                                        
                             <button type="button" class="btn btn-info" name="btn-v">
