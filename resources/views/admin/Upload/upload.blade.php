@@ -35,7 +35,7 @@
 
 
    <!--Implementar o limpar pesquisa e  editar pela pesquisa realizada -->    
-    <div class="" id="secondtab">
+    <div class="">
           <form method="post"  name="formupload" placeholder="Form Cadastrar Arquivos"
             action="{{route('admin.Upload.upload')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
