@@ -25,6 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
 Route::any('filedown','FilesDownController@show')->name('filedown');
 
+
 //rotas reutilizadas, para acesso de administrador.
 Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'prefix'=> 'admin'], function () {
     //usuarios
