@@ -136,7 +136,7 @@
                                         <h5 ><b><i>CEO - Agronomo Responsável</i></b></h5>
                                  </div>
                                 <div class="card-body text-center elevation-6">
-                                    <img src="\img\sla_logo.png" 
+                                    <img src="\img\avatar1.jpg" 
                                         class="card-img-top text-center elevation-3" />
                                 </div>                        
                                 <div class="description-block">                                   
@@ -157,8 +157,10 @@
 <div class="card">
   <div class="card-body">
     <h3 class="card-title bg-primary">Feeds Noticias</h3>
-    <p class="card-text">Feeds Noticias</p>
-            
+    <p class="card-text">Revista Brasileira de Ciências Agrárias (Agrária)</p>
+     <a href="http://www.agraria.pro.br/ojs-2.4.6/index.php?journal=agraria&page=article&op=view&path%5B%5D=534" >
+     Germinação de sementes de Heteropteris tomentosa
+    </a>
   </div>
   <div class="card-footer bg-primary">
   &nbsp 
