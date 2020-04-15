@@ -74,9 +74,9 @@ class FilesDownController extends Controller
             if (!empty($fileDow['0']->id)){
                     $caminho = $fileDow['0']->caminho;                            
                     //$path = $filetemp->store('uploads'); 
-                    $file= public_path(). "\\".$caminho; 
+                    $file= public_path(). "\\storage\\".$caminho; 
                     return response()->download($file);                    
-                    //return response()->download($caminho); //Storage::download('file.jpg', $caminho);                    
+                    //return response()->download($caminho); //Storage::download('file.jpg', $caminho);  storage\uploads\                  
             }else{
                 return redirect()
                 ->route('users.downloads.down')
