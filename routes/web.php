@@ -20,11 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 //Criar um grupo de rotas de usuarios 
 Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
 Route::any('filedown','FilesDownController@show')->name('filedown');
-
 
 //rotas reutilizadas, para acesso de administrador.
 Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'prefix'=> 'admin'], function () {
