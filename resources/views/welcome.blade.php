@@ -158,9 +158,7 @@
   <div class="card-body">
     <h3 class="card-title bg-primary">Feeds Noticias</h3>
     <p class="card-text">Feeds Noticias</p>
-                
-
-
+            
   </div>
   <div class="card-footer bg-primary">
   &nbsp 
