@@ -67,7 +67,7 @@
                                 <td>{{$Item->versao}}</td>     
                                 <td>{{$Item->caminho}}</td>                                                           
                                 <td>
-                                <img  style="width:70px;" src="{{Storage::url($Item->caminho)}}.jpg" />
+                                <img  style="width:70px;" src="{{Storage::url($Item->caminho)}}" />
                                 </td>   
                                 <td>
                 <form style="display:inline; width:100px;" method="GET" action="{{route('filedown')}}">
