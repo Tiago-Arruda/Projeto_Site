@@ -43,12 +43,19 @@
 
         <!-- Styles -->
         <style>
+            .feedsite{
+                    background: #ffffffff;
+                    height: 400px;
+                    width: 230px;
+                    position: absolute;
+                        top: 90px;
+                        right: 20px;
+                }
             
         </style>
     </head>
     <body class="hold-transition sidebar-mini" style="background-image: url('../img/sla_logo3.png'); 
-        background-repeat: no-repeat, repeat; background-size: cover; opacity: 0,5;">
-        
+        background-repeat: no-repeat, repeat; background-size: cover; opacity: 0,5;">        
         <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -97,7 +104,7 @@
     <div class="col-sm-3">
                               
       </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
                         <div class="card bg-info">                        
                             <div class="card-body">                                        
                                 <h2 class="card-title text-center display-4">
@@ -119,7 +126,7 @@
                                         <i>Se  projetas  alguma  coisa,  ela  te  sairá  bem,  e  a luz brilhará  em  
                                         teus  caminhos. (Jó 22:28)</i>
                                     </p>
-                                </div>                                   
+                                </div>                                                               
                             </div>
                         </div>
                         <div class="card bg-danger">                        
@@ -135,20 +142,32 @@
                                 <div class="description-block">                                   
                                         <p class="card-text">                                    
                                         FRANCO MARCELO PASA HERNANDEZ<br/>                                        
-                                        EMAIL: pasahernandez@yahoo.com.br<br/>
-                                        65 9614 – 2632  
+                                        EMAIL: pasahernandez@yahoo.com.br  - Tel: (65) 9614 – 2632<br/>
+                                          
                                         </p>
                                     </div>                                                     
                             </div>
                         </div>
     </div>
-    <div class="col-sm-2">
-     
-    </div>
+   
   </div>
+  
+</div>
+<div class="feedsite">
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title bg-primary">Feeds Noticias</h3>
+    <p class="card-text">Feeds Noticias</p>
+                
+
+
+  </div>
+  <div class="card-footer bg-primary">
+  &nbsp 
+  </div>
+</div>      
 
 </div>
-
 
 </body>
 </html>
