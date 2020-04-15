@@ -202,7 +202,7 @@
       </div>
     <div class="col-sm-5">                        
                     <div class="card bg-yellow">   
-                        <div class="col-md-16">
+                        <div class="col-md-11">
                             <div class="box box-widget widget-user">
                                 <div class="widget-user-header bg-yellow">
                                 <h3 class="widget-user-username">
@@ -222,13 +222,11 @@
                                             Contato: francopasa26@gmail.com<br/>                                    
                                         </p>
                                     </div>
-                                    </div>
-                                    
-
+                                    </div>                                
                                     <div class="col-sm-4">
                                     <div class="description-block">
-                                        <h5 class="description-header">Especialização</h5>
-                                        <span class="description-text">2016</span>
+                                        <h5 class="description-header"></h5>
+                                        <span class="description-text"></span>
                                     </div>
                                     </div>
                                 </div>
@@ -239,7 +237,7 @@
                     <!-- FIm-->
 
                     <div class="card bg-danger">   
-                        <div class="col-md-16">
+                        <div class="col-md-11">
                             <div class="box box-widget widget-user">
                                 <div class="widget-user-header bg-aqua">
                                 <h3 class="widget-user-username">Franco Pasa</h3>
@@ -290,10 +288,9 @@
      Germinação de sementes de Heteropteris tomentosa
     </a>
   </div>
-  <hr>
   <div class="card-body">    
     <iframe class="fw-iframe" src="https://feed.mikle.com/widget/v2/94643/" 
-        width="230px" height="370px" frameborder="0" scrolling="no"></iframe>
+        width="230px" height="300px" frameborder="0" scrolling="no"></iframe>
   </div>
   <div class="card-footer bg-primary">
   &nbsp 
