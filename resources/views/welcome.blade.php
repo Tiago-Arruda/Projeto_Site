@@ -288,10 +288,10 @@
      Germinação de sementes de Heteropteris tomentosa
     </a>
   </div>
-  <div class="card-body">    
+  <!--<div class="card-body">      
     <iframe class="fw-iframe" src="https://feed.mikle.com/widget/v2/94643/" 
         width="230px" height="300px" frameborder="0" scrolling="no"></iframe>
-  </div>
+  </div>-->
   <div class="card-footer bg-primary">
   &nbsp 
   </div>
