@@ -284,7 +284,7 @@ return [
             'submenu' => [ 
                 [
                     'text' => 'Alterar Industria',
-                    'url'  => 'admin/cadastro', //@tiago, Ver paraalterar o cadastro
+                    'url'  => 'admin/cadastro', //@tiago, Ver para alterar o cadastro
                     'icon' => 'fas fa-sign-out-alt',
                     'icon_color' => 'warning',
                     'label'       => 'Alter',
