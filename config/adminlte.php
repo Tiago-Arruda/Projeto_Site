@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>SoloCertoAgro</b>',
-    'logo_img' => '../img/logo_site.png', //'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => '../img/sla_logo.png', //'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -284,7 +284,7 @@ return [
             'submenu' => [ 
                 [
                     'text' => 'Alterar Industria',
-                    'url'  => 'admin/cadastro', //@tiago, Ver paraalterar o cadastro
+                    'url'  => 'admin/cadastro', //@tiago, Ver para alterar o cadastro
                     'icon' => 'fas fa-sign-out-alt',
                     'icon_color' => 'warning',
                     'label'       => 'Alter',

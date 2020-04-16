@@ -32,7 +32,7 @@
                     <h5 class="widget-user-desc">Founder & CEO</h5>
                 </div>
                 <div class="widget-user-image">
-                    <img class="img-circle elevation-2" src="../img/avatar.jpg" alt="User Avatar">
+                    <img class="img-circle elevation-3" src="../img/avatar1.jpg" alt="User Avatar">
                 </div>
             
             
@@ -41,24 +41,24 @@
                 <div class="row">
                     <div class="col-sm-4 border-right">
                         <div class="description-block">
-                        <h5 class="description-header">3,200</h5>
-                        <span class="description-text">SALES</span>
+                        <h5 class="description-header">5</h5>
+                        <span class="description-text">Artigos</span>
                         </div>
                         <!-- /.description-block -->
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4 border-right">
                         <div class="description-block">
-                        <h5 class="description-header">13,000</h5>
-                        <span class="description-text">FOLLOWERS</span>
+                        <h5 class="description-header">Formação</h5>
+                        <span class="description-text">UFMT - 2015</span>
                         </div>
                         <!-- /.description-block -->
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4">
                         <div class="description-block">
-                        <h5 class="description-header">35</h5>
-                        <span class="description-text">PRODUCTS</span>
+                        <h5 class="description-header">Especialização</h5>
+                        <span class="description-text">2016</span>
                         </div>
                         <!-- /.description-block -->
                     </div>

@@ -27,7 +27,6 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix'=> 'admi
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 //Criar um grupo de rotas de usuarios 
 Route::get('users/down','FilesDownController@index')->name('users.downloads.down');
 Route::any('filedown','FilesDownController@show')->name('filedown');
@@ -49,6 +48,9 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     Route::get('busca','FilesController@buscar')->name('admin.Upload.busca');
     Route::any('search','FilesController@search')->name('search');
     Route::any('uploadatualiza','FilesController@atualizadoc')->name('uploadatualiza');
+
+
+    
 
     //arquivos @gesser Miguel
     Route::get('clientes','ClientesController@index')->name('admin.clientes.clientes');

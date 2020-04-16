@@ -219,14 +219,11 @@ private function isAlreadyUploaded($file)
          * Apenas grava o arquivo depois da verificação.
          */
         //$path = $filetemp->store('uploads'); 
-        $upload = $request->file->storeAs('uploads', $request->nome.".".$extensaoarqv);  //salva no diretorio com o mesmo nome indicado pelo usuario
-        //$request->file('filetemp')->store('uploads');                
-        
-       // $novonome = $upload.".".$extensaoarqv;
+        $upload = $request->file->storeAs('uploads\\', $request->nome.".".$extensaoarqv);  
+        //salva no diretorio com o mesmo nome indicado pelo usuario             
           /*
          * Insere no banco. 
-         */  
-        
+         */          
         $files = new Documentos;
         $files->name        = $request->nome;
         $files->tipo = $tipofile;

@@ -23,13 +23,11 @@ class FilesDownController extends Controller
     * @return Response A instância da response.
     */
     public function index()
-    {
-        
-        $industriaUsers = Auth::user()->industria; 
-                       
+    {        
+        $industriaUsers = Auth::user()->industria;                        
         if (is_null($industriaUsers)){                        
             return redirect()
-            ->route('users.downloads.down')
+            ->route('home')
             ->with('error', 'Verifique com o Administrador'); 
         }
         else
@@ -47,10 +45,7 @@ class FilesDownController extends Controller
                 return redirect()
                     ->route('home')
                     ->with('error', 'Registro não encontrado');
-            }
-
-
-        
+            }        
         //return view('users.downloads.down');
         /// fazer o filtro por industria                                
     }   
@@ -62,13 +57,37 @@ class FilesDownController extends Controller
     * @return Response A instância da response.
     */
    
-        public function show()
+        public function show(Request $request)
         {
-            return view('home');
+            $_id = $request->input('_idfile');                        
+            //verificar a id enviada
+            if (is_null($_id)){
+                dd('dfgdgd');
+            }
+            else 
+            {
+                $fileDow = DB::table('files')
+                ->where('id', $_id)
+                ->get();
+            }
+            //baixar       
+            if (!empty($fileDow['0']->id)){
+                    $caminho = $fileDow['0']->caminho;                            
+                    //$path = $filetemp->store('uploads'); 
+                    $file= public_path(). "\\storage\\".$caminho; 
+                    return response()->download($file);                    
+                    //return response()->download($caminho); //Storage::download('file.jpg', $caminho);  storage\uploads\                  
+            }else{
+                return redirect()
+                ->route('users.downloads.down')
+                ->with('error', 'Registro não encontrado - Tente  Novamente'); 
+            }
+
+
+            //return view('home');
                         //return response()->download($arqb);
                         //return Storage::download('file.jpg', $name, $headers);
-
-           // return Storage::download($arqb->path, $arqb->name);
+                        // return Storage::download($arqb->path, $arqb->name);
         }
 
 
