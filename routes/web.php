@@ -19,6 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//rotas para usuarios logados 
+Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix'=> 'admin'], function(){
+    Route::get('/alterar','AlterarsenhaController@index')->name('alterar.senha'); 
+    Route::any('/updateOwn','AlterarsenhaController@updateOwn')->name('updateOwn'); 
+    
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Criar um grupo de rotas de usuarios 

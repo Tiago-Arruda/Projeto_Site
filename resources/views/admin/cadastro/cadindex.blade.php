@@ -90,17 +90,17 @@
                 {!! csrf_field()!!}
                 <input style="display:none;"  type="text" name="nome" value="{{$user[0]->id}}" placeholder="Digite o nome" class="form-control">
         <span class="input-group-btn">
-            <button type="submit" class="btn btn-success" name="btn-add">Add <span class="fa fa-plus">
+            <button type="submit" class="btn btn-success" name="btn-add">Add  <span class="fa fa-plus">
               </span>
             </button>
           </span>
         </form>
 
-          <form style="display:inline-block; width:50px;" method="GET" action="{{route('cadastrodown')}}">
+          <form style="display:inline-block; width:100px;" method="GET" action="{{route('cadastrodown')}}">
             {!! csrf_field()!!}
             <input style="display:none;"  type="text" name="nome" value="{{$user[0]->id}}" placeholder="Digite o nome" class="form-control">
           <span class="input-group-btn">
-            <button type="submit" class="btn btn-danger">Remover  <span class="fa fa-times">
+            <button type="submit" class="btn btn-danger" name="btn-remover">Excluir  <span class="fa fa-times">
               </span>
             </button>
           </span>
