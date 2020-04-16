@@ -20,9 +20,7 @@
         <div class="box-body">
            
                 <form method="POST" action="{{route('admin.cadastro.cadindex')}}">
-                    {!! csrf_field()!!}
-
-                    
+                    {!! csrf_field()!!}                    
                         <div class="input-group margin">
                         <input type="text" name="p_nome"  placeholder="Digite o nome" class="form-control">
                                     <span class="input-group-btn">
@@ -30,9 +28,7 @@
                                         </span>
                                       </button>
                                     </span>
-                        </div>
-                    
-                    
+                        </div>                                        
                 </form>
         </div>  
     </div>
