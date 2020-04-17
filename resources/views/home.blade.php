@@ -16,7 +16,16 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">Para Upar arquivos utilize o menu</p>
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif  
                     <p class="mb-0">Para Baixar arquivos utilize o menu</p>
                 </div>
             </div>
