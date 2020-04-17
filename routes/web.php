@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth','admin.auth'],'namespace' => 'Admin', 'pre
     //$this->post('cadastro','CadastroController@buscar')->name('admin.cadastro.cadindex');
     Route::any('cadastroup','CadastroController@atualiza')->name('cadastroup');
     Route::any('cadastrodown','CadastroController@excluir')->name('cadastrodown');
+    Route::any('at_industria','CadastroController@at_industria')->name('at_industria');
 
     //arquivos @gesser Miguel
     Route::get('upload','FilesController@index')->name('admin.Upload.upload');
