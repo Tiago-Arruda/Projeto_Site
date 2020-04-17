@@ -245,8 +245,8 @@ return [
             'icon'    => 'fas fa-fw fa-user-plus',
             'submenu' => [                               
                 [
-                    'text' => 'Senha',
-                    'url'  => 'admin/settings',
+                    'text' => 'Resetar Senha',
+                    'url'  => 'users/resetpas',
                     'icon' => 'fas fa-fw fa-lock',                    
                 ],  
 
