@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Franco Pasa</title>
@@ -36,14 +43,28 @@
         <link rel="manifest" href="/manifest.json">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
 
 
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    .footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }    
+    .img-c {
+                max-height: 250px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 80%;"
+    }
 
-
-        <!-- Styles -->
-        <style>
-            .feedsite{
+    .feedsite{
                     background: #ffffffff;
                     height: 400px;
                     width: 230px;
@@ -147,13 +168,12 @@
                 text-transform: uppercase;
             }
 
+  </style>
+</head>
+<body style="background-image: url('../img/home.jpg'); 
+        background-repeat: no-repeat, repeat; background-size: cover; opacity: 0,5;">
 
-
-        </style>
-    </head>
-    <body class="hold-transition sidebar-mini" style="background-image: url('../img/sla_logo3.png'); 
-        background-repeat: no-repeat, repeat; background-size: cover; opacity: 0,5;">        
-        <nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -168,7 +188,7 @@
                     </div>
                     <div class="navbar-header">
                     <a class="navbar-brand active" href="#">                        
-                        Franco Engenheiro Agronomo
+                        Solo Certo Agroambiental
                         </a>                        
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                      
@@ -189,17 +209,8 @@
                 </div>
             </nav>
 
-@section('content')  
-@stop
-
 <div class="container">
-<div class="row">
-    <div class="col-sm-3">
-
-    </div>
-    <div class="col-sm-3">
-                              
-      </div>
+<div class="row">      
     <div class="col-sm-5">                        
                     <div class="card bg-yellow">   
                         <div class="col-md-11">
@@ -235,7 +246,9 @@
                             </div>
                     </div>
                     <!-- FIm-->
-
+                    </div>
+   
+   <div class="col-sm-5">
                     <div class="card bg-danger">   
                         <div class="col-md-11">
                             <div class="box box-widget widget-user">
@@ -276,28 +289,66 @@
 
     </div>
    
+  </div>   
   </div>
-  
 </div>
-<div class="feedsite">
-<div class="card">
-  <div class="card-body">
-    <h3 class="card-title bg-primary">Feeds Noticias</h3>
-    <p class="card-text">Revista Brasileira de Ciências Agrárias (Agrária)</p>
-     <a href="http://www.agraria.pro.br/ojs-2.4.6/index.php?journal=agraria&page=article&op=view&path%5B%5D=534" >
-     Germinação de sementes de Heteropteris tomentosa
+  <!-- Carrossel -->
+<div class="container">  
+  <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active" >
+        <img class="img-c"
+             src="../img/clientes.png" alt="Los Angeles" style="width:100%;">
+            <div class="carousel-caption">
+            <h3>Clientes</h3>
+            <p>Parcerias que dão certo!</p>
+            </div>
+      </div>
+
+      <div class="item">
+        <img class="img-c"  src="../img/crea.png" alt="Chicago" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>CREA-MT</h3>
+          <p>Acesse!</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img class="img-c" src="../img/creaserviços.png" alt="New York" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Serviços</h3>
+          <p>Entrre no CREA-MT!</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
     </a>
   </div>
-  <!--<div class="card-body">      
-    <iframe class="fw-iframe" src="https://feed.mikle.com/widget/v2/94643/" 
-        width="230px" height="300px" frameborder="0" scrolling="no"></iframe>
-  </div>-->
-  <div class="card-footer bg-primary">
-  &nbsp 
-  </div>
-</div>      
-
 </div>
+
+
+
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
 
 </body>
 </html>
