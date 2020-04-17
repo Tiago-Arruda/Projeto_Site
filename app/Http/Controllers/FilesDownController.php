@@ -6,12 +6,14 @@ use App\Documentos;
 use Illuminate\Http\Request;
 use App\Http\Requests\FilesRequest;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Storage;
-
 use App\Http\Controllers\Controller;
+
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 
 class FilesDownController extends Controller
@@ -36,11 +38,17 @@ class FilesDownController extends Controller
             ->where('industria', 'like',  "%" . $industriaUsers)
             ->get();                    
         }
-                     
+                   
+        
+
         if (!empty($file['0']->id)){                        
             $id = $file['0']->id;
-            return 
-                view('users.downloads.down')->with('file', $file)->with('id',$id);                            
+           
+            
+            $filet = DB::table('files')->paginate(5);
+
+            return  view('users.downloads.down', compact('file', $filet) );
+               // view('users.downloads.down')->with('file', $file)->with('id',$id);                            
             }else{
                 return redirect()
                     ->route('home')
