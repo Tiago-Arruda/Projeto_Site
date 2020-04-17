@@ -69,36 +69,38 @@
                                 <td>
                                 <img  style="width:70px;" src="{{Storage::url($Item->caminho)}}" />
                                 </td>   
-                                <td>
-                <form style="display:inline; width:100px;" method="GET" action="{{route('filedown')}}">
-                    {!! csrf_field()!!}
-                        <input style="display:none;"  type="text" name="_idfile" value=" {{$Item->id}}" 
-                        class="form-control">
-                        <span class="input-group-btn">                                        
-                            <button type="submit" class="btn btn-success" name="btn-b" ><span class="fa fa-download">
-                            </span>
-                            </button>
-                </span>
-                </form>         
-                <form style="display:inline; width:100px;" method="GET">
-                    {!! csrf_field()!!}
-                        <input style="display:none;"  type="text" name="_idfile" value=" {{$Item->id}}" 
-                        class="form-control">
-                        <span class="input-group-btn">                                        
-                            <button type="button" class="btn btn-info" name="btn-v">
-                                <span class="fa fa-eye"></span>
-                            </button>
-                        </span>
-                        
-                </span>
-                </form>                                                                                    
+                                                <td>
+                                <form style="display:inline; width:100px;" method="GET" action="{{route('filedown')}}">
+                                    {!! csrf_field()!!}
+                                        <input style="display:none;"  type="text" name="_idfile" value=" {{$Item->id}}" 
+                                        class="form-control">
+                                        <span class="input-group-btn">                                        
+                                            <button type="submit" class="btn btn-success" name="btn-b" ><span class="fa fa-download">
+                                            </span>
+                                            </button>
+                                </span>
+                                </form>         
+                                <form style="display:inline; width:100px;" method="GET">
+                                    {!! csrf_field()!!}
+                                        <input style="display:none;"  type="text" name="_idfile" value=" {{$Item->id}}" 
+                                        class="form-control">
+                                        <span class="input-group-btn">                                        
+                                            <button type="button" class="btn btn-info" name="btn-v">
+                                                <span class="fa fa-eye"></span>
+                                            </button>
+                                        </span>
+                                        
+                                </span>
+                                </form>                                                                                    
                                 </td>
-                            </tr>                             
-        @empty
-                        @endforelse                         
-                    </tbody>
-                </table>                
-                
+                            </tr>     
+                                               
+                     @empty
+                @endforelse                         
+                      </tbody>
+                 </table>                
+                 
+
             </div>  
         </div>
 <!-- essa div precisa ser  vista ainda-->
