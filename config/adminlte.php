@@ -242,11 +242,11 @@ return [
         ['header' => 'CONFIGURAÇÃO'],         
         [            
             'text'    => 'Configurar',
-            'icon'    => 'fas fa-fw fa-user-plus',
-            'submenu' => [                               
+            'icon'    => 'fas fa-fw fa-cog',
+            'submenu' => [                                 
                 [
-                    'text' => 'Resetar Senha',
-                    'url'  => 'users/resetpas',
+                    'text' => 'Senha',
+                    'url'  => 'admin/alterar',
                     'icon' => 'fas fa-fw fa-lock',                    
                 ],  
 
@@ -291,24 +291,7 @@ return [
                     'label_color' => 'success',
                     
                 ],                  
-                [
-                    'text' => 'Cadastro',
-                    'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
-                    'icon' => 'fas fa-fw fa-plus',
-                    'icon_color' => 'primary',
-                    'label'       => 'Add   Adm',
-                    'label_color' => 'success',
-                    
-                ],
-                [
-                    'text'    => 'Excluir',
-                    'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
-                    'icon' => 'fas fa-fw fa-times',
-                    'icon_color' => 'red',
-                    'label'       => 'Remove Adm',
-                    'label_color' => 'success',
-                     
-                ],
+               
                
             ],
         ],
@@ -326,6 +309,24 @@ return [
                     'label_color' => 'success',
                     
                 ],                                                 
+            ],
+        ],
+        [
+            'can'  => 'authadmin',
+            'text'    => 'Gerenciar Administradores',
+            'icon'    => 'fas fa-fw fa-user-plus',            
+            'submenu' => [        
+                [
+                    'text' => 'Cadastrar/Excluir',
+                    'url'  => 'admin/cadastro', //add por @tiago, caminho para a viewr de cadastro.
+                    'icon' => 'fas fa-fw fa-edit',
+                    'icon_color' => 'primary',
+                    'label'       => 'Adm',
+                    'label_color' => 'success',
+                    
+                ],
+               
+               
             ],
         ],
             
