@@ -42,10 +42,9 @@ class FilesDownController extends Controller
         
 
         if (!empty($file['0']->id)){                        
-            $id = $file['0']->id;
-           
+            $id = $file['0']->id;                       
             
-            $filet = DB::table('files')->paginate(5);
+            $filet = DB::table('files')->paginate('5');
 
             return  view('users.downloads.down', compact('file', $filet) );
                // view('users.downloads.down')->with('file', $file)->with('id',$id);                            
