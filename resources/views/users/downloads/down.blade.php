@@ -102,8 +102,9 @@
                  
 
             </div>  
+            <!-- fim do box-->
         </div>
-<!-- essa div precisa ser  vista ainda-->
+<!-- fim do conteiner-->
  </div> 
  @endif 
 
