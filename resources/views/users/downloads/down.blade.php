@@ -94,20 +94,17 @@
                                 </form>                                                                                    
                                 </td>
                             </tr>     
-                                               
+                            
                      @empty
-                @endforelse                         
                       </tbody>
-                 </table>                
-                 
-
+                </table>                                              
+            @endforelse             
             </div>  
+            
             <!-- fim do box-->
         </div>
 <!-- fim do conteiner-->
  </div> 
- @endif 
-
-
-
+ {{$file->links()}}
+ @endif   
 @stop
