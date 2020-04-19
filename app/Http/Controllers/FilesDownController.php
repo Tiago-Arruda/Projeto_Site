@@ -26,35 +26,33 @@ class FilesDownController extends Controller
     */
     public function index()
     {        
-        $industriaUsers = Auth::user()->industria;                        
-        if (is_null($industriaUsers)){                        
-            return redirect()
-            ->route('home')
-            ->with('error', 'Verifique com o Administrador'); 
-        }
-        else
-        {    
-            $file = DB::table('files')
-            ->where('industria', 'like',  "%" . $industriaUsers)
-            ->get();                    
-        }
-                   
+        $industriaUsers = Auth::user()->industria;    
+        $isadmin = Auth::user()->isadmin; 
         
+            if($isadmin=='1'){      
+                $file = DB::table('files')->paginate(5);            
+            }else 
+                {
+                    if (is_null($industriaUsers)){
+                        return redirect()
+                        ->route('home')
+                        ->with('error', 'Verifique com o Administrador'); 
+                    }else     
+                    {
+                     $file = DB::table('files')->where('industria', 'like', $industriaUsers)->paginate(3);            
+                    }
+                }
 
-        if (!empty($file['0']->id)){                        
-            $id = $file['0']->id;                       
-            
-            $filet = DB::table('files')->paginate('5');
 
-            return  view('users.downloads.down', compact('file', $filet) );
-               // view('users.downloads.down')->with('file', $file)->with('id',$id);                            
+
+            //Retonar os valores para view
+            if (!empty($file['0']->id)){                                
+                 return  view('users.downloads.down', compact('file', $file));                       
             }else{
                 return redirect()
                     ->route('home')
                     ->with('error', 'Registro não encontrado');
-            }        
-        //return view('users.downloads.down');
-        /// fazer o filtro por industria                                
+            }                                
     }   
     
 /**
@@ -69,7 +67,7 @@ class FilesDownController extends Controller
             $_id = $request->input('_idfile');                        
             //verificar a id enviada
             if (is_null($_id)){
-                dd('dfgdgd');
+                dd('Erro');
             }
             else 
             {
