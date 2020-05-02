@@ -3,11 +3,9 @@
 <head>
   <title>SoloCertoAgro</title>
   <link rel="shortcut icon" href="{{ asset('../img/sla_logo.png') }}">
-  
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+ 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -16,31 +14,61 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-           
 
-    
-
-  <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;                      
+<style>
+    .div-footer{
+        height:300px;
+        background-color: #2E2E2E !important;
     }
-    
     .div_t {
-        height: 50px;
+        height: 62px;
     }
 
-    /* Add a gray background color and some padding to the footer */
-    .footer {
-      background-color: #f2f2f2;
-      padding: 25px;
+
+    .bg-green {
+                background-color: #173B0B !important;
+            }
+    .bg-yellow {
+        background-color: #f39c12 !important;
+    }
+    .bg-dark {background-color: #363636 !important; }
+    .bg-blue {
+        background-color: #0073b7 !important;
     }    
+    .bg-aqua {
+        background-color: #00c0ef !important;
+    }    
+    .bg-light{background-color: #FFFAFA !important;}
+    .bg-red {
+        background-color: #dd4b39 !important;
+    }
+    .bg-greenLigth {
+        background-color: #298A08 !important;
+    }
+
+
+    .navbar-nav > li.active >a{
+      color: #FFFFFF;
+    }      
+    .navbar-nav > li.active >a
+    {        
+        color: #FFFFFF;
+    }
+    .navbar-nav > li.active:hover >a{
+        background:#298A08; color: ##173B0B;
+    } 
+
+    .navbar-nav >.nav-item:hover > a{ background:#298A08; color:#FFF; }
+
+    .opaco {opacity: 2;}
+
+    
+
     .img-c {
-                max-height: 200px;
+                max-height: 400px;
                 margin-left: auto;
                 margin-right: auto;
-                max-width: 80%;
+                max-width: 100%;
     }
 
     .img-d {
@@ -56,19 +84,63 @@
                 border-top-right-radius: 100px;
                 border-bottom-left-radius: 100px;
     }
+       .imgzoom img:hover {
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            -ms-transform: scale(1.);
+            transform: scale(1.1);
+            transition: .9s ease;
+            
+        }
 
 
-    .feedsite{
-                    background: #ffffffff;
-                    height: 400px;
-                    width: 230px;
-                    position: absolute;
-                        top: 55px;
-                        right: 20px;
-                }       
+    .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;          
+            opacity: 9;
+            overflow: hidden;
+            width: 100%;
+            height: 50%;
+            transform: scale(0);
+            transition: .8s ease;
+        }
+
+        
+        .cont {
+            position: relative;            
+            margin-left: 0;
+        }
+
+        .cont:hover .overlay {
+            transform: scale(1);
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .font_T{font-family:Arial Narrow, sans-serif
+            font-style:italic;}
+        .font_TT{font-family:Bradley Hand, cursive}
+        .font_TTT{font-family:Chalkduster, fantasy}
+        .info{          
+            color: white;
+            bottom: 0;
+        }
 
 
-            .box-widget {
+        .box-widget {
                 border: none;
                 position: relative;
             }
@@ -97,25 +169,7 @@
                 height: 120px;
                 border-top-right-radius: 3px;
                 border-top-left-radius: 3px;
-            }
-            .bg-yellow {
-                background-color: #f39c12 !important;
-            }
-            .bg-dark {background-color: #363636 !important; }
-            .bg-blue {
-                background-color: #0073b7 !important;
-            }
-            .bg-secondary{background-color: #808080 !important;}
-            .bg-aqua {
-                background-color: #00c0ef !important;
-            }
-            .bg-green {
-                background-color: #00a65a !important;
-            }
-            .bg-light{background-color: #FFFAFA !important;}
-            .bg-red {
-                background-color: #dd4b39 !important;
-            }
+            }            
             .widget-user .widget-user-username {
                 margin-top: 0;
                 margin-bottom: 5px;
@@ -210,172 +264,319 @@
             transition: .3s ease;
         }
 
+        .carousel-caption>.d-md-block {
+            display: block !important;
+        }
+
         
-        .cont {
-            position: relative;            
-            margin-left: 0;
-        }
-
-        .cont:hover .overlay {
-            transform: scale(1);
-        }
-
-        .text {
-            color: white;
-            font-size: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .font_T{font-family:Arial Narrow, sans-serif
-            font-style:italic;}
-        .font_TT{font-family:Bradley Hand, cursive}
-        .font_TTT{font-family:Chalkduster, fantasy}
-        .info{          
-            color: white;
-            bottom: 0;
-        }
 
 
-
-  </style>
+</style>
 </head>
-<body style="background-image: url('../img/home.jpg'); 
+<body style="background-image: url('../img/sla_fundo4.png'); 
         background-repeat: no-repeat, repeat; background-size: cover; opacity: 9;">
 
-            <nav class="navbar navbar-inverse navbar-top navbar-fixed-top"> <!--navbar-inverse barra preta-->
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
+            <nav class="navbar navbar-expand-lg  navbar-dark bg-green navbar-fixed-top"> <!--navbar-inverse barra preta-->
+                <div class="container-fluid">                
+                    <div class="navbar-header">                                        
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" 
+                        data-target="#bs-example-navbar-collapse-1" aria-controls="#bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Alterna navegação">
+                        <span class="navbar-toggler-icon"></span>                            MENU
+                        </button>                                                                                                                     
                         <a class="navbar-brand" href="#">
-                        <img src="../img/sla_logo.png" width="30" heigth="30"/>                        
+                            <img src="../img/sla_logo.png" width="30" heigth="30"/>                        
                         </a>
-                    </div>
-                    <div class="navbar-header">
-                    <a class="navbar-brand active" href="#">                        
+                         <a class="navbar-brand active" href="#">                        
                         Solo Certo Agroambiental
                         </a>                        
+                    
                     </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                      
-                        <ul class="nav navbar-nav navbar-right active">
-                        @if (Route::has('login'))                            
-                                @auth
-                                <li class="active">    <a href="{{ url('/home') }}">Home</a></li>
-                                @else
-                                <li class="active">    <a href="{{ route('login') }}">Login</a></li>
+                    
+                    <div class="collapse navbar-collapse opaco" id="bs-example-navbar-collapse-1">                                              
+                        
+                        <div class="navbar-header lead mb-0">
+                            <ul class="nav navbar-nav active">
+                                    <li class="nav-item active">
+                                        <a class="navbar-brand active" href="#">                        
+                                            <span class="glyphicon glyphicon glyphicon-home"></span>
+                                        </a>                                                                        
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="navbar-brand active"class="dropdown-toggle" 
+                                        href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+                                        aria-haspopup="true" aria-expanded="false">                        
+                                        Serviços                        
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                        </a>
+                                        <div class="dropdown-menu bg-greenLigth" aria-labelledby="navbarDropdown">                                                                                                                                                    
+                                                <a class="dropdown-item" href="#portifolio">                                                        
+                                                        <span class="glyphicon glyphicon glyphicon-edit"></span>                                                                                                   
+                                                            Portifolio                                                    
+                                                </a>                                                    
+                                                <a class="dropdown-item" href="#">Serviço1</a>                                                    
+                                                <a class="dropdown-item" href="#">Serviço1</a>                                                
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Serviço1</a>
+                                                
+                                            
+                                        </div>
+                                    </li> 
+                                    <li class="nav-item active">
+                                        <a class="navbar-brand active" href="#contato">                        
+                                            Contato
+                                        <!--<span class="glyphicon glyphicon-th"></span>-->
+                                        </a>                                                                        
+                                    </li>                                           
+                                    <li class="nav-item active">
+                                        <a class="navbar-brand active" href="#sobre">                        
+                                            Nossa Historia                                        
+                                        </a>                                                                        
+                                    </li>                                           
+                                    
+                            </ul>
 
-                                    @if (Route::has('register'))
-                                    <li class="active"><a href="{{ route('register') }}">Register</a></li>
-                                    @endif
-                                @endauth                            
-                        @endif                           
+                        </div>                    
+                        <ul class="nav navbar-nav navbar-right  active">
+                            @if (Route::has('login'))                            
+                                    @auth
+                                    <li class="active">    <a href="{{ url('/home') }}">Home</a></li>                                                
+                                    @else
+                                    <li class="active">   
+                                        <a href="{{ route('login') }}">Login <span class="glyphicon glyphicon-log-in"></span></a>
+                                    </li>
+
+                                        @if (Route::has('register'))
+                                        <li class="active"><a href="{{ route('register') }}">Register <span class="glyphicon glyphicon-user"></span></a></li>
+                                        @endif
+                                    @endauth                            
+                            @endif                           
                         </ul>
                     </div>
                 </div>
             </nav>
-                        
-            
-            
-            
+
+<!--Fim Menu navegação-->
 <div class="div_t"></div>
-<div class="div_t"></div>
-        <div class="container">
-            <div class="row">      
-                <div class="col-sm-5">                        
-                        <div class="card bg-yellow">   
-                            <div class="col-md-11">
+<!--Slaids Principal-->
+<main role="main"> 
+     
+<!-- Carrossel -->
+  
+  <div id="myCarousel" 
+    class="carousel carousel-fade jumbotron carousel slide carousel-touch "
+    data-interval="4000" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+            <!-- Wrapper for slides -->
+    <div class="carousel-inner img-c" >
+            <div class="item active" >
+                <img class="d-block w-100" src="img/imagens/morangos.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Morandos</h5>
+                        <p>Crescente plantação.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Veja Materia</a></p>
+                    </div>                        
+            </div>
+
+            <div class="item">
+                <img class="d-block w-100" src="img/imagens/maracuja-fruta-tropical.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>...</h5>
+                    <p>...</p>
+                </div>
+            </div>
+            
+            <div class="item">
+                <img class="d-block w-100" src="img/imagens/horta.jpg" alt="Third slide">
+                    <div class="container">
+                        <div class="carousel-caption text-right">
+                            <h1>Morandos</h1>
+                            <p>Crescente plantação.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Veja Materia</a></p>
+                        </div>                    
+                    </div>
+            </div>    
+  
+    </div>
+
+    
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  </div>
+  <div class="div_t" id="contato"></div>
+  
+  <hr class="featurette-divider"  >
+
+      <div class="container marketing">
+
+        <!-- Três colunas de texto, abaixo do carousel -->
+        <div class="row">
+          <div class="col-lg-4 imgzoom">
+            <img class="rounded-circle" src="\img\avatar1.jpg" alt="Generic placeholder image" width="140" height="140">
+            <h2 class="font-weight-bold display-4 text-warning">Franco Pasa</h2>
+            <p class="text-info display-5">Ceo & Founder</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                <p><a class="" href="#" role="button"></a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Título</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Título</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+
+        <!-- COMEÇAM AS MENCIONADAS FEATUREZINHAS xD -->
+        <div class="div_t" id="contato"></div>        
+        <hr class="featurette-divider" >            
+        
+        <div class="row featurette">
+        <div class="div_t"></div>   
+          <div class="col-md-7" style="border: 4px dotted red;">
+            <!-- carrossel two -->                
+                    <div >
+                    <section  id="sliderhome" class="carousel slide" data-ride="carousel" >
+                        <div id="meuslaide" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#meuslaide" data-slide-to="0" class="active"></li>
+                            <li data-target="#meuslaide" data-slide-to="1"></li>
+                            <li data-target="#meuslaide" data-slide-to="2"></li>
+                        </ol>
+                                            
+                            <div class="carousel-inner">
+                                <div class="item active">                               
+                                    <div>
+
+                                    
+                                        <h1 class="font_TT">
+                                            Desenvolvimento agricola
+                                        </h1>                                                        
+                                        <h3 class="font_T">Clientes</h3>
+                                        <p>Parcerias que dão certo!</p>
+                                        <p>Parcerias que dão certo!</p>                            
+                                        <p>Parcerias que dão certo!</p>                            
+                                        <p>Parcerias que dão certo!</p>                            
+                                        <p>Parcerias que dão certo!</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="div-img-carousel">
+                                        <h1 class="font_TTT">
+                                        Desenvolvimento agricola
+                                        </h1>                            
+                                        <h3 class="font_T">Clientes</h3>
+                                        <p class="font_T">Parcerias que dão certo!</p>                            
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="div-img-carousel">
+                                        <h1 class="font_TT">
+                                        Desenvolvimento agricula
+                                        </h1>                            
+                                        <h3 class="font_TTT">Clientes</h3>
+                                        <p class="font_T">Parcerias que dão certo!</p>                            
+                                        <p class="font_T">Parcerias que dão certo!</p>                            
+                                        <p>Parcerias que dão certo!</p>                            
+                                        <p class="font_T">Parcerias que dão certo!</p>                            
+                                        <p class="font_TT">Parcerias que dão certo!</p>                            
+                                                                    
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>
+                            <div> 
+                                <span style="border: 4px dotted red;">
+                                <a class="left"  href="#meuslaide" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                </span>
+                                <span style="border: 4px dotted red; border-left: 0;">
+                                <a class="right" href="#meuslaide" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                                </span>
+                            </div>
+                    </section>                   
+
+            </div>
+                                
+          </div>
+          <div class="col-md-5">           
+            <div class="imgzoom" >
+                <img src="img/business.jpg" alt="" class="img-d featurette-image img-fluid mx-auto " data-holder-rendered="true">
+            </div>            
+          </div>
+        </div>
+        <div class="div_t" id="sobre">
+                
+        </div>   
+        <hr class="featurette-divider" id="sobre" >
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2" >                    
+                    <h2 class="featurette-heading">Sobre Nós
+                    <span class="text-muted">Conheça nossa historia</span></h2>            
+    
+                            <div class="card bg-yellow">                               
                                 <div class="box box-widget widget-user">
                                     <div class="widget-user-header bg-yellow">
-                                    <h3 class="widget-user-username">
-                                        <b>SOLO CERTO <i> Agroambiental</i></b>    
-                                    </h3>                                
+                                        <h3 class="widget-user-username">
+                                            <b>SOLO CERTO <i> Agroambiental</i></b>    
+                                        </h3>                                
                                     </div>
                                     <div class="widget-user-image2" style="">
-                                            <img src="\img\sla_logo.png" class="card-img-top text-center" alt="...">
+                                            <img src="\img\sla_logo.png" 
+                                            class="card-img-top text-center" alt="...">
                                     </div>
                                     <div class="box-footer">
-                                    <div class="row">
-                                        <div class="col-sm-8 border-right">
-                                        <div class="description-block">
-                                            <p class="card-text text-left">
-                                                Av. Brasil nº 269, Torre H Bloco 4 AP. 1002 <br/>
-                                                Morada do Ouro II  Cep: 78.053 – 734 Cuiabá/MT<br/>
-                                                Contato: francopasa26@gmail.com<br/>                                    
-                                            </p>
-                                        </div>
-                                        </div>                                
-                                        <div class="col-sm-4">
-                                        <div class="description-block">
-                                            <h5 class="description-header"></h5>
-                                            <span class="description-text"></span>
-                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8 border-right">
+                                                <div class="description-block">
+                                                    <p class="card-text text-left">
+                                                        Av. Brasil nº 269, Torre H Bloco 4 AP. 1002 <br/>
+                                                        Morada do Ouro II  Cep: 78.053 – 734 Cuiabá/MT<br/>
+                                                        Contato: francopasa26@gmail.com<br/>                                    
+                                                    </p>
+                                                </div>
+                                            </div>                                                                        
                                         </div>
                                     </div>
-                                    </div>
-                                </div>
-                                </div>
+                                </div>                                
                             </div>
-                                <!-- FIm-->
+                                <!-- FIm-->                                        
                         </div>
-            
-                        <div class="col-sm-5">
-                                <div class="card bg-danger">   
-                                    <div class="col-md-11">
-                                    <div class="box box-widget widget-user">
-                                            <div class="widget-user-header bg-aqua">
-                                            <h3 class="widget-user-username">Franco Pasa</h3>
-                                            <h5 class="widget-user-desc">Founder &amp; CEO</h5>
-                                            </div>
-                                            <div class="widget-user-image">
-                                            <img class="img-circle" src="\img\avatar1.jpg" alt="User Avatar">
-                                            </div>
-                                            <div class="box-footer">
-                                            <div class="row">
-                                                <div class="col-sm-4 border-right">
-                                                <div class="description-block">
-                                                    <h5 class="description-header">5</h5>
-                                                    <span class="description-text">Artigos</span>
-                                                </div>
-                                                </div>
-                                                <div class="col-sm-4 border-right">
-                                                <div class="description-block">
-                                                        <h5 class="description-header">Formação</h5>
-                                                        <span class="description-text">UFMT - 2015</span>
-                                                </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <div class="description-block">
-                                                    <h5 class="description-header">Especialização</h5>
-                                                    <span class="description-text">2016</span>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FIm-->
-                        </div>  
-                                        
-                </div>   
+                        <div class="col-md-5 order-md-1 imgzoom">
+                            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" 
+                            alt="500x500" src="img/business.jpg" data-holder-rendered="true" style="width: 400px; height: 400px;">
+                        </div>
+                    
             </div>
-        </div>
-            
 
+        <hr class="featurette-divider" id="portifolio">
 
-        <!-- Clientes -->
+        <div class="row featurette">
+           <!-- Clientes -->
         <div>
-            <div class="bg-success box_opacity1 text-center">
+            <div class="box_opacity1 text-center">
                 <h3>&nbsp</h3>            
                 <div class="container mx-md-n4">
                     <div class="row mx-md-n4">
@@ -406,29 +607,32 @@
                         </div>
                         <div class="col-md-3">
                             <div class="cont">
-                                        <div class="bg-yellow">
+                                        <div class="bg-warning">
                                             <img src="img/corteva.png" class="im"> 
                                             <h3>Parceiros</h3>
                                         </div>
-                                        <div class="overlay bg-yellow"> 
-                                            <h4>Cliente</h4>                   
+                                        <div class="overlay bg-warning"> 
+                                        <h4>Cliente</h4>                   
                                             <div class="text">                                    
                                                     <p>In a free hour power.</p>
                                             </div>
+                                            <button class="btn btn-dark">
+                                                Acessar
+                                            </button>
                                         </div>                        
                             </div>                
                         </div>
                         <div class="col-md-3">
                             <div class="cont">
-                                        <div class="bg-red">
+                                        <div class="bg-danger">
                                             <img src="img/corteva.png" class="im"> 
                                             <h3>Parceiros</h3>
                                         </div>
-                                        <div class="overlay bg-red"> 
-                                            <h4>Cliente</h4>                   
-                                            <div class="text">                                    
-                                                    <p>In a free hour power.</p>
-                                            </div>
+                                        <div class="overlay bg-danger center"> 
+                                            <h3>&nbsp</h3>
+                                            <button class="btn btn-dark">
+                                                Acessar
+                                            </button>
                                         </div>                        
                             </div>                
                         </div>
@@ -440,210 +644,93 @@
 
         <div class="div_t"></div>
 
-    <div class="button bg-success text-center">        
-        <p>
-    </div>
 
+        </div>
 
-                        <!-- carrossel two -->    
-                        <div class="container " >     
-                            <div class="row" >
-                                <div class="col-xl-8 col-lg-8 bg-light box_opacity1">
-                                    <div class="box_opacity">
-                                    <section id="sliderhome" class="carousel slide carousel-fade" data-ride="carousel" >
-                                        <div id="meuSlider" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#meuSlider" data-slide-to="0" class="active"></li>
-                                            <li data-target="#meuSlider" data-slide-to="1"></li>
-                                            <li data-target="#meuSlider" data-slide-to="2"></li>
-                                        </ol>
-                                                            
-                                            <div class="carousel-inner">
-                                                <div class="item active">
-                                                    <div>
-                                                        <h1 class="font_TT">
-                                                            Desenvolvimento agricola
-                                                        </h1>                                                        
-                                                        <h3 class="font_T">Clientes</h3>
-                                                        <p>Parcerias que dão certo!</p>
-                                                        <p>Parcerias que dão certo!</p>                            
-                                                        <p>Parcerias que dão certo!</p>                            
-                                                        <p>Parcerias que dão certo!</p>                            
-                                                        <p>Parcerias que dão certo!</p>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="div-img-carousel">
-                                                        <h1 class="font_TTT">
-                                                        Desenvolvimento agriculoa
-                                                        </h1>                            
-                                                        <h3 class="font_T">Clientes</h3>
-                                                        <p class="font_T">Parcerias que dão certo!</p>                            
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="div-img-carousel">
-                                                        <h1 class="font_TT">
-                                                        Desenvolvimento agriculoa
-                                                        </h1>                            
-                                                        <h3 class="font_TTT">Clientes</h3>
-                                                        <p class="font_T">Parcerias que dão certo!</p>                            
-                                                        <p class="font_T">Parcerias que dão certo!</p>                            
-                                                        <p>Parcerias que dão certo!</p>                            
-                                                        <p class="font_T">Parcerias que dão certo!</p>                            
-                                                        <p class="font_TT">Parcerias que dão certo!</p>                            
-                                                                                    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a class="left carousel-control" href="#meuSlider" data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                            </a>
-                                            <a class="right carousel-control" href="#meuSlider" data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right"></span>
-                                            </a>
-                                        </div>
-                                    </section>                   
+        <hr class="featurette-divider">
 
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-4">
-                                    <div class="" >
-                                        <img src="img/business.jpg" alt="" class="img-d">
-                                    </div>
-                                </div>
+        <!-- /FIM DAS FEATUREZINHAS *-* -->
 
-                            </div>       
-                        </div>   
-                        <!--/ fim page fan --> 
+      </div><!-- /.container -->
+     
+    </main>
+
+<!--fim-->
 
 
 
 
-<div class="div_t"></div>
-
- <!-- Carrossel -->
- <div class="container">  
-  <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active" >
-        <img class="img-c"
-             src="../img/clientes.png" style="width:100%;">           
-      </div>
-
-      <div class="item">
-        <img class="img-c"  src="../img/crea.png" alt="Chicago" style="width:100%;">        
-      </div>
-    
-      <div class="item">
-        <img class="img-c" src="../img/creaserviços.png" alt="New York" style="width:100%;">        
-              
-      </div>
-  
-    </div>
-
-    <!-- Left and right controls
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a> -->
-  </div>
-
-  </div>
-</div>
 
 
-<div class="div_t"></div>
+<!--Clientes-->
 
-<!-- fimcarrossel -->
+<!--Slaids-->
 
+<!--Sobre-->
 
-
-
-<!--   / INICIO FOOTER 
-        <div class="button bg-secondary info">
-            <div class="bg-dark">
-                <div class="row">
-                    <div class="col-xl-4 col-md-4 col-lg-4">
-                        <div>
-                            <div class="">
-                                <a href="#">
-                                  
-                                </a>
-                            </div>                            
-                            <div>
-                                <ul>
-                                    <li >
-                                        <a href="https://pt-br.facebook.com/">
-                                            <img src="..\img\ico_face.png">
-                                        </a>
-                                    </li>
-                                    
-                                    <li>
-                                        <a href="#">
-                                              <img src="..\img\Instagram.png">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
-                        <div class="">
-                            <h3 class="">
-                                    Services
-                            </h3>
-                            <ul class="info">
-                                <li><a href="#" class="info" >Design</a></li>
-                                <li><a href="#" class="info">Finance</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div >
-                            <h3 class="info">
-                                    Useful Links
-                            </h3>
-                            <ul >
-                                <li ><a href="#"class="info" >About</a></li>
-                                <li><a href="#" class="info">Blog</a></li>
-                                <li><a href="#" class="info"> Contact</a></li>
-                                <li><a href="#" class="info"> Free quote</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="">
-                            <h3 class="">
-                                Address
-                            </h3>                            
-                        </div>
-                    </div>
+<!--   / INICIO FOOTER -->
+    <div class="div-footer">
+        <div class="row">
+            <div class="col-md-3">                       
+                <div >
+                <h3 class="info bg-primary">
+                     Nossas Especialidades
+                    </h3>
+                    <ul >
+                    <li ><a href="#"class="info" > RA</a></li>
+                    <li ><a href="#"class="info" >  Ver todos os serviços</a></li>
+                    <li ><a href="#"class="info" >  Governança Corporativa</a></li>
+                    <li ><a href="#"class="info" >  Planejamento Sucessório</a></li>
+                    <li ><a href="#"class="info" > Consultoria Tributária</a></li>
+                    <li ><a href="#"class="info" > Regularização Fundiária e Ambiental</a></li>
+                    <li ><a href="#"class="info" > Relações Governamentais</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>-->
+            <div class="col-md-5">                       
+                <div >
+                <h3 class="info bg-warning">
+                           Rede Sociais
+                    </h3>
+                    <ul >
+                        <li ><a href="#"class="info" >About</a></li>
+                        <li><a href="#" class="info">Blog</a></li>
+                        <li><a href="#" class="info"> Contact</a></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">                       
+                <div >
+                    <h3 class="info bg-danger">
+                            Links Importantes
+                    </h3>
+                    <ul >
+                        <li ><a href="#"class="info" >About</a></li>
+                        <li><a href="#" class="info">Blog</a></li>
+                        <li><a href="#" class="info"> Contact</a></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+       </div> 
+       
+    </div>
 <!-- fIM FOOTER-->
-<div class="div_t"></div>
 
-<footer class="container-fluid text-center navbar-fixed-bottom bg-dark info">
-    <p>@GesserPaixao @TiagoArruda | Copyright © 2020 | hoje: {{ date('D d/m/y') }}
-    </p> 
+
+<!--Footer-->
+<footer class="container-fluid text-center text-white navbar-fixed-bottom bg-dark info">
+    <p>@GesserPaixao @TiagoArruda | Copyright © 2020 | hoje: {{ date('D d/m/y') }}    
+        <span class="float-right text-white glyphicon glyphicon-chevron-up">
+        <a href="#" class="text-white font_TT">Voltar ao topo</a></span>
+    </p>
 </footer>
-
 </body>
 </html>
