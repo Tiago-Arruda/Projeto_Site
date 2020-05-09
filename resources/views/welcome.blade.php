@@ -18,12 +18,14 @@
 <style>
     .div-footer{
         height:300px;
-        background-color: #2E2E2E !important;
+        
     }
     .div_t {
         height: 62px;
     }
 
+    .mdrop{ color:#FFFFFF;}
+    .mdrop:hover {color:#298A08;}   
 
     .bg-green {
                 background-color: #173B0B !important;
@@ -55,7 +57,7 @@
         color: #FFFFFF;
     }
     .navbar-nav > li.active:hover >a{
-        background:#298A08; color: ##173B0B;
+        background:#298A08; color: #173B0B;
     } 
 
     .navbar-nav >.nav-item:hover > a{ background:#298A08; color:#FFF; }
@@ -63,9 +65,8 @@
     .opaco {opacity: 2;}
 
     
-
     .img-c {
-                max-height: 400px;
+                max-height: 460px;
                 margin-left: auto;
                 margin-right: auto;
                 max-width: 100%;
@@ -131,9 +132,10 @@
         }
 
         .font_T{font-family:Arial Narrow, sans-serif
-            font-style:italic;}
+            font-style italic;}
         .font_TT{font-family:Bradley Hand, cursive}
         .font_TTT{font-family:Chalkduster, fantasy}
+        .font_TTTT{font-family:Bradley Hand, cursive, monospace}
         .info{          
             color: white;
             bottom: 0;
@@ -297,9 +299,9 @@
                         <div class="navbar-header lead mb-0">
                             <ul class="nav navbar-nav active">
                                     <li class="nav-item active">
-                                        <a class="navbar-brand active" href="#">                        
+                                        <!--<a class="navbar-brand active" href="#">                        
                                             <span class="glyphicon glyphicon glyphicon-home"></span>
-                                        </a>                                                                        
+                                        </a>-->                                                                        
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="navbar-brand active"class="dropdown-toggle" 
@@ -308,15 +310,15 @@
                                         Serviços                        
                                         <span class="glyphicon glyphicon-chevron-down"></span>
                                         </a>
-                                        <div class="dropdown-menu bg-greenLigth" aria-labelledby="navbarDropdown">                                                                                                                                                    
+                                        <div class="dropdown-menu bg-greenLigth mdrop" aria-labelledby="navbarDropdown">                                                                                                                                                    
                                                 <a class="dropdown-item" href="#portifolio">                                                        
                                                         <span class="glyphicon glyphicon glyphicon-edit"></span>                                                                                                   
                                                             Portifolio                                                    
                                                 </a>                                                    
-                                                <a class="dropdown-item" href="#">Serviço1</a>                                                    
-                                                <a class="dropdown-item" href="#">Serviço1</a>                                                
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Serviço1</a>
+                                                <a class="dropdown-item mdrop" href="#">Serviço1</a>                                                    
+                                                <a class="dropdown-item mdrop" href="#">Serviço1</a>                                                
+                                                <div class="dropdown-divider mdrop"></div>
+                                                <a class="dropdown-item mdrop" href="#">Serviço1</a>
                                                 
                                             
                                         </div>
@@ -358,7 +360,7 @@
 <!--Fim Menu navegação-->
 <div class="div_t"></div>
 <!--Slaids Principal-->
-<main role="main"> 
+
      
 <!-- Carrossel -->
   
@@ -373,31 +375,32 @@
     </ol>
 
             <!-- Wrapper for slides -->
-    <div class="carousel-inner img-c" >
-            <div class="item active" >
+    <div class="carousel-inner " >
+            <div class="item img-c active" >
                 <img class="d-block w-100" src="img/imagens/morangos.jpg" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Morandos</h5>
-                        <p>Crescente plantação.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Veja Materia</a></p>
+                        <h1>Morangos</h1>
+                        <p>Variedades de morango da Patagônia conquistam mercado no Paraná.</p>
+                        <p><a class="btn btn-lg btn-primary" href="https://www.olhardireto.com.br/noticias/exibir.asp?id=287485&noticia=variedades-de-morango-da-patagonia-conquistam-mercado-no-parana"
+                         role="button">Veja Materia</a></p>
                     </div>                        
             </div>
 
-            <div class="item">
+            <div class="item img-c">
                 <img class="d-block w-100" src="img/imagens/maracuja-fruta-tropical.jpg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
+                    <h2>Maracujá</h2>
+                    <p>Maracujá-doce BRS Mel do Cerrado ganha mercado de frutas especiais</p>
+                    <p><a class="btn btn-lg btn-primary" href="https://www.embrapa.br/busca-de-noticias/-/noticia/45389063/maracuja-doce-brs-mel-do-cerrado-ganha-mercado-de-frutas-especiais" role="button">Veja a Materia</a></p>                        
                 </div>
             </div>
             
-            <div class="item">
+            <div class="item img-c">
                 <img class="d-block w-100" src="img/imagens/horta.jpg" alt="Third slide">
                     <div class="container">
-                        <div class="carousel-caption text-right">
-                            <h1>Morandos</h1>
-                            <p>Crescente plantação.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Veja Materia</a></p>
+                        <div class="carousel-caption text-right font_TTTT">
+                            <h1 classe="text-success">ABC do Alface</h1>                            
+                            <p><a class="btn btn-lg btn-primary" href="https://globoplay.globo.com/v/838046/" role="button">Veja Materia</a></p>
                         </div>                    
                     </div>
             </div>    
@@ -426,8 +429,8 @@
         <div class="row">
           <div class="col-lg-4 imgzoom">
             <img class="rounded-circle" src="\img\avatar1.jpg" alt="Generic placeholder image" width="140" height="140">
-            <h2 class="font-weight-bold display-4 text-warning">Franco Pasa</h2>
-            <p class="text-info display-5">Ceo & Founder</p>
+            <h2 class="font-weight-bold font_TTTT display-4 text-warning">Franco Pasa</h2>
+            <p class="text-info  display-5">Ceo & Founder</p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
                 <p><a class="" href="#" role="button"></a></p>
           </div><!-- /.col-lg-4 -->
@@ -465,9 +468,7 @@
                                             
                             <div class="carousel-inner">
                                 <div class="item active">                               
-                                    <div>
-
-                                    
+                                    <div>                                    
                                         <h1 class="font_TT">
                                             Desenvolvimento agricola
                                         </h1>                                                        
@@ -543,7 +544,7 @@
                                             <b>SOLO CERTO <i> Agroambiental</i></b>    
                                         </h3>                                
                                     </div>
-                                    <div class="widget-user-image2" style="">
+                                    <div class="widget-user-image2">
                                             <img src="\img\sla_logo.png" 
                                             class="card-img-top text-center" alt="...">
                                     </div>
@@ -584,7 +585,7 @@
                             <div class="cont">
                                 <div class="bg-green">
                                     <img src="img/corteva.png" class="im">                        
-                                    <h3>Parceiros</h3>
+                                    <h3 class="info">Parceiros</h3>
                                 </div>
                                 <div class="overlay bg-green">
                                     <div class="text">Texto</div>
@@ -612,10 +613,7 @@
                                             <h3>Parceiros</h3>
                                         </div>
                                         <div class="overlay bg-warning"> 
-                                        <h4>Cliente</h4>                   
-                                            <div class="text">                                    
-                                                    <p>In a free hour power.</p>
-                                            </div>
+                                        <h4>Cliente</h4>                                                               
                                             <button class="btn btn-dark">
                                                 Acessar
                                             </button>
@@ -653,7 +651,6 @@
 
       </div><!-- /.container -->
      
-    </main>
 
 <!--fim-->
 
@@ -668,10 +665,12 @@
 
 <!--Sobre-->
 
+
+
 <!--   / INICIO FOOTER -->
-    <div class="div-footer">
+    <div class="div-footer bg-success info">
         <div class="row">
-            <div class="col-md-3">                       
+            <div class="col-md-4">                       
                 <div >
                 <h3 class="info bg-primary">
                      Nossas Especialidades
@@ -687,7 +686,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-5">                       
+            <div class="col-md-4">                       
                 <div >
                 <h3 class="info bg-warning">
                            Rede Sociais
